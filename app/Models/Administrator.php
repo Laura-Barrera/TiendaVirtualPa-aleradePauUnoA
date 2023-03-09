@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sale extends Model
+class Administrator extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'amount',
-        'nameProduct',
-        'price',
-        'id_salesRecord'
+        'user',
+        'password'
     ];
 
-    public function salesRecord(): BelongsTo
+    public function person(): HasMany
     {
-        return $this->belongsTo(SalesRecord::class);
+        return $this->hasMany(Person::class);
     }
 }

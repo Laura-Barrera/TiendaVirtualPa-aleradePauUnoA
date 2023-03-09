@@ -4,12 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
-/**
- * @method static paginate(int $int)
- */
 class Product extends Model
 {
     use HasFactory;
@@ -26,7 +21,8 @@ class Product extends Model
         'referenceNumber',
         'iva',
         'image',
-        'category_id'
+        'category_id',
+        'id_salesRecord'
     ];
 
     public function category(): BelongsTo
