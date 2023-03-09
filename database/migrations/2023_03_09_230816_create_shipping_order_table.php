@@ -29,7 +29,7 @@ class CreateShippingOrderTable extends Migration
             $table->unsignedBigInteger('documentPerson');
             $table->foreign('documentPerson')
                 ->references('id')
-                ->on('persons')
+                ->on('customers')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

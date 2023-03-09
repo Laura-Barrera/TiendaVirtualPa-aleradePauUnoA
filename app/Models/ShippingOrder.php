@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ShippingOrder extends Model
 {
@@ -26,8 +27,8 @@ class ShippingOrder extends Model
         return $this->belongsTo(OrderDetail::class);
     }
 
-    public function person(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Customer::class);
     }
 }

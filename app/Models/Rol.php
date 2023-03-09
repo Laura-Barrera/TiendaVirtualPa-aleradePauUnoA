@@ -4,20 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Administrator extends Model
+class Rol extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'user',
-        'password'
+        'description'
     ];
 
-    public function person(): HasMany
+    protected $hidden = [
+        'id'
+    ];
+
+    public function User(): BelongsTo
     {
-        return $this->hasMany(Person::class);
+        return $this->belongsTo(User::class);
     }
 }
