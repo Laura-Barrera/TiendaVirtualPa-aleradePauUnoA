@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg custom-navbar" id="mainNav">
     <div class="container">
         <img src="{{asset('img/logos/logo.png')}}" id="logo" width="100px" alt=""/>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="color: black">
             Menu
             <i class="fas fa-bars ms-1"></i>
         </button>
