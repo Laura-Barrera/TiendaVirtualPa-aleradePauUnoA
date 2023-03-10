@@ -16,6 +16,7 @@ class HomeController extends Controller
     public function index(): RedirectResponse
     {
         $user = User::all()->find(Auth::id());
+
         if ($user->rol->description == 'administrator') {
             return redirect()->route('employee/management');
         }elseif ($user->rol->description == 'employee') {

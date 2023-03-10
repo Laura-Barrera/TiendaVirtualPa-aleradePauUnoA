@@ -65,7 +65,7 @@
 @section('loginScript')
 
     <script>
-        $(function () {
+        $(function(){
             $('#loginForm').submit(function (e) {
                 e.preventDefault();
                 let formData = $(this).serializeArray();

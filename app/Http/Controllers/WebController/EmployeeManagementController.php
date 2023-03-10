@@ -14,11 +14,10 @@ class EmployeeManagementController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdministrator');
     }
     public function index(): Factory|View|Application
     {
         $data['employees'] = Employee::all();
-        return view('components.employee.index', $data);
+        return view('components.employeeManagement.index', $data);
     }
 }

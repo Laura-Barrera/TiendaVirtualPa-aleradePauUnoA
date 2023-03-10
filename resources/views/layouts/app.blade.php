@@ -29,6 +29,8 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/globalStyles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboardStyles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/clockpicker.css') }}" rel="stylesheet">
 </head>
 <body id="body" class="body_move">
     <div id="app">
@@ -52,12 +54,9 @@
                                 Administrador
                             @elseif(Auth::user()->rol->description == 'employee')
                                 <span>Empleado</span>
-                            @else
-                                {{ Auth::user()->client->name }}
                             @endif
 
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                             <a class="dropdown-item" href="{{ route('start') }}">
@@ -103,8 +102,6 @@
                             <span>Administrador</span>
                         @elseif(Auth::user()->rol->description == 'employee')
                             <span>Empleado</span>
-                        @else
-                            <span>Cliente</span>
                         @endif
                     </div>
                 </a>
@@ -123,57 +120,6 @@
                 @endif
 
                 @if(Auth::user()->rol->description == 'employee')
-                    <a href="{{ route('employee/data') }}"
-                       class="{{request()->routeIs('employee/data') ? 'selected' : ''}}">
-                        <div class="option">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                            <span>Información&nbsp;Personal</span>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('employee/reservations') }}"
-                       class="{{request()->routeIs('employee/reservations') ? 'selected' : ''}}">
-                        <div class="option">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                            <span>Reservas</span>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('employee/domiciles') }}"
-                       class="{{request()->routeIs('employee/domiciles') ? 'selected' : ''}}">
-                        <div class="option">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                            <span>Domicilios del día</span>
-                        </div>
-                    </a>
-
-                @endif
-
-                @if(Auth::user()->rol->description == 'client')
-
-                    <a href="{{ route('booking') }}"
-                       class="{{request()->routeIs('booking') ? 'selected' : ''}}">
-                        <div class="option">
-                            <i class="fa-solid fa-bell-concierge"></i>
-                            <span>Solicitar&nbsp;reservas</span>
-                        </div>
-                    </a>
-
-
-                    <a href="{{ url('makeOrder/' . 1) }}">
-                        <div class="option">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                            <span>Solicitar&nbsp;domicilio</span>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('activityHistory') }}"
-                       class="{{request()->routeIs('activityHistory') ? 'selected' : ''}}">
-                        <div class="option">
-                            <i class="fa-solid fa-book-open"></i>
-                            <span>Historial&nbsp;actividades</span>
-                        </div>
-                    </a>
 
                 @endif
 
@@ -189,6 +135,7 @@
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/dashboardScript.js')}}"></script>
     <script src="{{asset('js/clockpicker.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         window.addEventListener("pageshow", function (event) {
