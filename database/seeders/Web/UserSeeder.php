@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = new User([
-            'email' => 'admin@gmail.com',
+            'email' => 'pauAdmin@gmail.com',
             'password' => bcrypt('admin123'),
             'rol_id' => 1
         ]);
