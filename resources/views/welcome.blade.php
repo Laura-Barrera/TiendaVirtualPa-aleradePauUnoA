@@ -29,8 +29,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/globalStyles.css') }}" rel="stylesheet">
 
 </head>
 
@@ -39,8 +40,8 @@
     <!-- NAVBAR -->
     @include('components.welcome.navbar')
     @include('components.welcome.masthead')
-    {{--@include('components.welcome.login')
-    @include('components.welcome.register')--}}
+    @include('components.welcome.login')
+
 
     <!-- CONTENT -->
     @yield('start')
@@ -66,8 +67,9 @@
     </script>
 
 <!-- Script sections -->
-{{--@yield('loginScript')
-@yield('registerScript')--}}
+    @yield('loginScript')
+    @yield('registerScript')
+
 
 </body>
 

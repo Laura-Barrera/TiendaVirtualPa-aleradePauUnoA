@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('start')
-    <section class="page-section bg-light" id="portfolio">
+    <section class="page-section bg-light mt-3" id="portfolio">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Te puede interesar</h2>

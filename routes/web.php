@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\WebController\EmployeeManagementController;
+use App\Http\Controllers\WebController\HomeController;
 use App\Http\Controllers\WebController\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,3 +21,9 @@ Route::get('/', [welcomeController::class, 'getStart'])->name('start');
 
 Auth::routes();
 
+/* Ruta de inicio modulos internos */
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+/* Rutas gestión empleados */
+Route::get('/employee/management', [EmployeeManagementController::class, 'index'])->name('employee/management');

@@ -1,0 +1,186 @@
+@import url("https://fonts.cdnfonts.com/css/arial-rounded-mt-bold");
+
+body {
+    font-size: 17px;
+}
+
+.custom-nabvar {
+    position: absolute;
+    top: 1rem;
+    left: 5%;
+    right: 5%;
+    width: auto;
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: black;
+    z-index: 10;
+}
+
+.navbar-brand {
+    color: #eea520;
+    font-size: 22px;
+    font-family: "Arial Rounded MT Bold", sans-serif;
+}
+
+.navbar-brand:hover {
+    color: #eea520;
+}
+
+.nav-link {
+    color: white;
+    font-size: 20px;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #eea520;
+}
+
+.link-active, .link-active:hover {
+    color: #eea520;
+}
+
+.navbar-toggler {
+    color: rgba(255, 255, 255, 0);
+}
+
+.navbar-toggler i {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: bolder;
+}
+
+.custom-footer-icons {
+    color: gray;
+}
+
+.custom-footer-icons:hover {
+    color: #eea520;
+}
+
+@media (max-width: 768px) {
+
+    .custom-nabvar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .custom-nabvar:hover {
+        box-shadow: none;
+    }
+
+    .nav-link:hover {
+        color: #eea520;
+    }
+
+    .link-active {
+        color: #eea520;
+    }
+}
+
+.wallpaper {
+    height: 100vh;
+    z-index: 9;
+}
+
+.w-Color-One {
+    background-image: url('../images/wallpapers/homeWallpaper.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.w-Color-One:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.25);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+
+.w-Color-Two {
+    background-image: url('../images/wallpapers/specialsWallpaper.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.w-Color-Two:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
+
+.w-Color-Three {
+    background-image: url('../images/wallpapers/ubicationWallpaper.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.w-Color-Three:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+/* Formulario principal */
+.custom-form:focus {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+/* Boton principal */
+.custom-main-button {
+    width: 30%;
+    background: #eea520;
+    font-size: 15px;
+    color: black;
+}
+
+.custom-main-button:focus {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0);
+}
+
+.custom-levitation-effect {
+    transform: translateY(0px);
+    transition: transform 0.5s;
+}
+
+.custom-levitation-effect:hover {
+    transform: translateY(-8px);
+}
+
+.button-select:focus {
+    background: #eea520;
+}
+
+.modal-open {
+    padding: 0 !important;
+    overflow-y: auto !important;
+}
