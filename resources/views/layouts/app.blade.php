@@ -116,11 +116,20 @@
                             <span>Gestión&nbsp;empleados</span>
                         </div>
                     </a>
+
                     <a href="{{ route('shippingOrder/management') }}"
                        class="{{request()->routeIs('shippingOrder/management') ? 'selected' : ''}}">
                         <div class="option">
                             <i class="fa-solid fa-bag-shopping"></i>
                             <span>Gestión&nbsp;Pedidos</span>
+                        </div>
+                    </a>
+
+                    <a href="{{ route('product/management') }}"
+                       class="{{request()->routeIs('product/management') ? 'selected' : ''}}">
+                        <div class="option">
+                            <i class="fa-solid fa-burger"></i>
+                            <span>Gestión&nbsp;productos</span>
                         </div>
                     </a>
                 @endif

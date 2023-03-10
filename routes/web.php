@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WebController\EmployeeManagementController;
 use App\Http\Controllers\WebController\HomeController;
+use App\Http\Controllers\WebController\ProductController;
 use App\Http\Controllers\WebController\ShippingManagementController;
 use App\Http\Controllers\WebController\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -38,5 +39,14 @@ Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::cla
 Route::get('/shippingOrder/management', [ShippingManagementController::class, 'index'])->name('shippingOrder/management');
 Route::get('/shippingOrder/management/{shipping}', [ShippingManagementController::class, 'details']);
 
+/* Rutas gestión productos*/
+Route::get('/product/management', [ProductController::class, 'index'])->name('product/management');
+Route::get('/product/create', [ProductController::class, 'create']);
+Route::post('/product/store', [ProductController::class, 'store']);
+Route::get('/product/edit/{product}', [ProductController::class, 'edit']);
+Route::patch('/product/update/{product}', [ProductController::class, 'update']);
+Route::delete('/product/destroy/{product}', [ProductController::class, 'destroy']);
+
 /* Rutas empleado módulo */
 Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeController::class, 'show'])->name('employee/data');
+

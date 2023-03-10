@@ -21,7 +21,7 @@
                     <th>Estado del pago</th>
                     <th>Estado del pedido</th>
                     <th>Detalle</th>
-                    <th>ACCIONES</th>
+                    <th>Acciones</th>
                 </tr>
 
                 </thead>

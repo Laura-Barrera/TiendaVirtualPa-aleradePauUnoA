@@ -25,7 +25,7 @@ class ShippingManagementController extends Controller
     }
     public function details(ShippingOrder $shippingOrder): Factory|View|Application
     {
-        $data['details'] = OrderDetail::all()->where('domicile_sale_id', '=', $shippingOrder->getAttribute('id'));
+        $data['details'] = OrderDetail::all()->where('shipping_order_id', '=', $shippingOrder->getAttribute('id'));
         return view('components.details.index', $data);
     }
 
