@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WebController\WelcomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [welcomeController::class, 'getStart'])->name('start');
+
 Auth::routes();
 
-Route::get('/', [welcomeController::class, 'getStart'])->name('start');
