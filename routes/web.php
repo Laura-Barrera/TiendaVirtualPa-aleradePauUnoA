@@ -32,3 +32,6 @@ Route::post('/employee/store', [EmployeeManagementController::class, 'store']);
 Route::get('/employee/edit/{employee}', [EmployeeManagementController::class, 'edit']);
 Route::patch('/employee/update/{employee}', [EmployeeManagementController::class, 'update']);
 Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::class, 'destroy']);
+
+/* Rutas empleado módulo */
+Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeController::class, 'show'])->name('employee/data');
