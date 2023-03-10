@@ -30,7 +30,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/globalStyles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboardStyles.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/clockpicker.css') }}" rel="stylesheet">
 </head>
 <body id="body" class="body_move">
     <div id="app">
@@ -134,7 +133,6 @@
     <!-- Scripts -->
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/dashboardScript.js')}}"></script>
-    <script src="{{asset('js/clockpicker.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
