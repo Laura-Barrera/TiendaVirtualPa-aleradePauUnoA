@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WebController\EmployeeManagementController;
 use App\Http\Controllers\WebController\HomeController;
+use App\Http\Controllers\WebController\ShippingManagementController;
 use App\Http\Controllers\WebController\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,10 @@ Route::post('/employee/store', [EmployeeManagementController::class, 'store']);
 Route::get('/employee/edit/{employee}', [EmployeeManagementController::class, 'edit']);
 Route::patch('/employee/update/{employee}', [EmployeeManagementController::class, 'update']);
 Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::class, 'destroy']);
+
+/* Rutas gestión pedidos*/
+Route::get('/shippingOrder/management', [ShippingManagementController::class, 'index'])->name('shippingOrder/management');
+Route::get('/shippingOrder/management/{shipping}', [ShippingManagementController::class, 'details']);
 
 /* Rutas empleado módulo */
 Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeController::class, 'show'])->name('employee/data');

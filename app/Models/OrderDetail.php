@@ -14,6 +14,7 @@ class OrderDetail extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
+        'shipping_order_id',
         'dateOrder',
         'fullValue',
         'id_PaymentMethod'

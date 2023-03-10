@@ -18,7 +18,6 @@ class ShippingOrder extends Model
         'department',
         'paymentStatus',
         'shippingStatus',
-        'id_orderDetail',
         'documentPerson'
     ];
 

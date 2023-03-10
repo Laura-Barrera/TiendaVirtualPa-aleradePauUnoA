@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShippingOrderTable extends Migration
+class CreateShippingOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateShippingOrderTable extends Migration
      */
     public function up()
     {
-        Schema::create('shipping_order', function (Blueprint $table) {
+        Schema::create('shipping_orders', function (Blueprint $table) {
             $table->id();
             $table->string('address');
             $table->string('city');
             $table->string('department');
             $table->boolean('paymentStatus');
             $table->boolean('shippingStatus');
-            $table->unsignedBigInteger('id_orderDetail');
-            $table->foreign('id_orderDetail')
-                ->references('id')
-                ->on('order_details')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->unsignedBigInteger('documentPerson');
             $table->foreign('documentPerson')
                 ->references('id')
