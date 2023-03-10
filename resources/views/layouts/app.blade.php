@@ -146,5 +146,7 @@
             }
         });
     </script>
+    <!-- Script sections -->
+    @yield('indexEmployeeScript')
 </body>
 </html>

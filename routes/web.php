@@ -27,3 +27,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /* Rutas gestión empleados */
 Route::get('/employee/management', [EmployeeManagementController::class, 'index'])->name('employee/management');
+Route::get('/employee/create', [EmployeeManagementController::class, 'create']);
+Route::post('/employee/store', [EmployeeManagementController::class, 'store']);
+Route::get('/employee/edit/{employee}', [EmployeeManagementController::class, 'edit']);
+Route::patch('/employee/update/{employee}', [EmployeeManagementController::class, 'update']);
+Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::class, 'destroy']);
