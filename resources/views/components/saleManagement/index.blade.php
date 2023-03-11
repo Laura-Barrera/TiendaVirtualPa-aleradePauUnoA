@@ -13,14 +13,15 @@
 
                 <tr style="border-color: black">
                     <th>N° Pedido</th>
+                    <th>Fecha del Pedido</th>
                     <th>Documento cliente</th>
                     <th>Nombre cliente</th>
                     <th>Dirección</th>
                     <th>Ciudad</th>
                     <th>Departamento</th>
-                    <th>Estado del pago</th>
                     <th>Estado del pedido</th>
-                    <th>Detalle</th>
+                    <th>Total</th>
+                    <th>Detalle de Compra</th>
                     <th>Acciones</th>
                 </tr>
 
@@ -31,13 +32,13 @@
                 @foreach ($shipping_order as $shipping)
                     <tr>
                         <td>{{$shipping->id}}</td>
+                        <td>{{$shipping->saleDate}}</td>
                         <td>{{$shipping->customer->documentNumber}}</td>
                         <td>{{$shipping->customer->name}}</td>
-                        <td>{{$shipping->address}}</td>
-                        <td>{{$shipping->city}}</td>
-                        <td>{{$shipping->department}}</td>
-                        <td>{{$shipping->paymentStatus}}</td>
-                        <td>{{$shipping->shippingStatus}}</td>
+                        <td>{{$shipping->shippingOrder->address}}</td>
+                        <td>{{$shipping->shippingOrder->city}}</td>
+                        <td>{{$shipping->shippingOrder->department}}</td>
+                        <td>{{$shipping->saleStatus}}</td>
                         <td><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary">Visualizar
                                 Detalle</a></td>
                     </tr>

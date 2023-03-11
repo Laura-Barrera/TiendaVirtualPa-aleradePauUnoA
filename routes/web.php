@@ -3,7 +3,7 @@
 use App\Http\Controllers\WebController\EmployeeManagementController;
 use App\Http\Controllers\WebController\HomeController;
 use App\Http\Controllers\WebController\ProductController;
-use App\Http\Controllers\WebController\ShippingManagementController;
+use App\Http\Controllers\WebController\SalesManagementController;
 use App\Http\Controllers\WebController\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +36,8 @@ Route::patch('/employee/update/{employee}', [EmployeeManagementController::class
 Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::class, 'destroy']);
 
 /* Rutas gestión pedidos*/
-Route::get('/shippingOrder/management', [ShippingManagementController::class, 'index'])->name('shippingOrder/management');
-Route::get('/shippingOrder/management/{shipping}', [ShippingManagementController::class, 'details']);
+Route::get('/shippingOrder/management', [SalesManagementController::class, 'index'])->name('shippingOrder/management');
+Route::get('/shippingOrder/management/{shipping}', [SalesManagementController::class, 'details']);
 
 /* Rutas gestión productos*/
 Route::get('/product/management', [ProductController::class, 'index'])->name('product/management');

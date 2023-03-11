@@ -22,13 +22,22 @@
                     <th>ID Pedido</th>
                     <th>ID Detalle</th>
                     <th>Nombre Producto</th>
-                    <th>Precio</th>
+                    <th>Precio Unitario</th>
                     <th>Cantidad</th>
                 </tr>
 
                 </thead>
 
                 <tbody class="text-center">
+                @foreach ($details as $detail)
+                    <tr>
+                        <td>{{$detail->sale_id}}</td>
+                        <td>{{$detail->id}}</td>
+                        <td>{{$detail->product->name}}</td>
+                        <td>{{$detail->product->price}}</td>
+                        <td>{{$detail->amount}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
 
             </table>
