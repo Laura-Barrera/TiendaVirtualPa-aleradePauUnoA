@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [welcomeController::class, 'getStart'])->name('start');
+Route::get('/', [welcomeController::class, 'getStart']);
 
 Auth::routes();
 

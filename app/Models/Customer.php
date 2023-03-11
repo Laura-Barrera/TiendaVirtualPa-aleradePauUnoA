@@ -21,9 +21,9 @@ class Customer extends Model
         'address',
         'email',
     ];
-    public function shippingOrder(): HasMany
+    public function sale(): HasMany
     {
-        return $this->hasMany(ShippingOrder::class);
+        return $this->hasMany(Sale::class);
     }
 
 }

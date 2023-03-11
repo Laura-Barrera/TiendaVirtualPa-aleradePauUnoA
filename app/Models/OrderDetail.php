@@ -14,19 +14,12 @@ class OrderDetail extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'shipping_order_id',
-        'dateOrder',
-        'fullValue',
-        'id_PaymentMethod'
+        'sale_id',
+        'amount'
     ];
 
-    public function paymentMethod(): BelongsTo
+    public function sale(): BelongsTo
     {
-        return $this->belongsTo(PaymentMethod::class);
-    }
-
-    public function shippingOrder(): HasMany
-    {
-        return $this->hasMany(ShippingOrder::class);
+        return $this->belongsTo(Sale::class);
     }
 }

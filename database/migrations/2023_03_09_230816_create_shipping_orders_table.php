@@ -18,14 +18,6 @@ class CreateShippingOrdersTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('department');
-            $table->boolean('paymentStatus');
-            $table->boolean('shippingStatus');
-            $table->unsignedBigInteger('documentPerson');
-            $table->foreign('documentPerson')
-                ->references('id')
-                ->on('customers')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 

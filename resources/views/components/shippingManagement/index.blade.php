@@ -51,18 +51,3 @@
     </div>
 
 @endsection
-
-@section('domicilesScript')
-    <script>
-
-        @if(session('message') == 'informationSavedSuccessfully')
-        Swal.fire({
-            title: 'Información guardada',
-            text: 'Por favor verifica tu correo electronico.',
-            icon: 'success',
-            confirmButtonColor: '#199605',
-        })
-        @endif
-
-    </script>
-@endsection

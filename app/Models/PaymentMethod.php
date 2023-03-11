@@ -18,8 +18,8 @@ class PaymentMethod extends Model
         'additionalCost'
     ];
 
-    public function orderdetail(): HasMany
+    public function sale(): HasMany
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(Sale::class);
     }
 }

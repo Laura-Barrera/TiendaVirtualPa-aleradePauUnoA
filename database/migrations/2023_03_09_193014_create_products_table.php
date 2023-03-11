@@ -28,12 +28,6 @@ class CreateProductsTable extends Migration
                 ->on('categories')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('id_salesRecord')->nullable();;
-            $table->foreign('id_salesRecord')
-                ->references('id')
-                ->on('sales_records')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 

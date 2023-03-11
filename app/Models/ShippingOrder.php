@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ShippingOrder extends Model
 {
@@ -15,19 +16,10 @@ class ShippingOrder extends Model
     protected $fillable = [
         'address',
         'city',
-        'department',
-        'paymentStatus',
-        'shippingStatus',
-        'documentPerson'
+        'department'
     ];
-
-    public function orderDetail(): BelongsTo
+    public function sale(): HasMany
     {
-        return $this->belongsTo(OrderDetail::class);
-    }
-
-    public function customer(): BelongsTo
-    {
-        return $this->belongsTo(Customer::class);
+        return $this->hasMany(Sale::class);
     }
 }
