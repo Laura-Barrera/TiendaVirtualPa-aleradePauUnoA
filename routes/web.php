@@ -38,6 +38,11 @@ Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::cla
 /* Rutas gestión pedidos*/
 Route::get('/shippingOrder/management', [SalesManagementController::class, 'index'])->name('shippingOrder/management');
 Route::get('/shippingOrder/management/{shipping}', [SalesManagementController::class, 'details']);
+Route::patch('/shippingOrder/management/changeStatus/{shipping}', [SalesManagementController::class, 'changeStatus']);
+Route::delete('/shippingOrder/management/changeStatus/{shipping}', [SalesManagementController::class, 'destroy']);
+
+/* Rutas consolidado de ventas*/
+Route::get('/sales/management', [SalesManagementController::class, 'indexRealizedSales'])->name('sales/management');
 
 /* Rutas gestión productos*/
 Route::get('/product/management', [ProductController::class, 'index'])->name('product/management');

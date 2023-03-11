@@ -19,8 +19,8 @@
                     <th>Dirección</th>
                     <th>Ciudad</th>
                     <th>Departamento</th>
-                    <th>Estado del pedido</th>
                     <th>Total</th>
+                    <th>Estado del pedido</th>
                     <th>Detalle de Compra</th>
                     <th>Acciones</th>
                 </tr>
@@ -38,9 +38,20 @@
                         <td>{{$shipping->shippingOrder->address}}</td>
                         <td>{{$shipping->shippingOrder->city}}</td>
                         <td>{{$shipping->shippingOrder->department}}</td>
+                        <td>{{$shipping->totalCost}}</td>
                         <td>{{$shipping->saleStatus}}</td>
                         <td><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary">Visualizar
-                                Detalle</a></td>
+                                Detalle</a>
+                        </td>
+                        <td><a href="{{url('/shippingOrder/management/changeStatus/'.$shipping->id)}}" class="btn btn-primary">Cambiar Estado</a>
+
+                            <form action="{{url('/shippingOrder/management/destroy/'.$shipping->id)}}"
+                                  class="d-inline confirmation_alert" method='post'>
+                                @csrf
+                                {{method_field('DELETE')}}
+                                <input type='submit' value="Borrar" class="btn btn-danger">
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
 
@@ -51,4 +62,45 @@
         </div>
     </div>
 
+@endsection
+
+@section('indexSaleScript')
+    <script>
+        @if(session('message') == 'successfulSaleUpdate')
+        Swal.fire({
+            title: 'Estado del pedido actualizado correctamente',
+            icon: 'success',
+            confirmButtonColor: '#199605',
+        })
+        @endif
+
+        @if(session('message') == 'successfulSaleDelete')
+        Swal.fire({
+            title: 'Pedido cancelado correctamente',
+            icon: 'success',
+            confirmButtonColor: '#199605',
+        })
+        @endif
+
+        $('.confirmation_alert').submit(function (e) {
+
+            e.preventDefault()
+
+            Swal.fire({
+                title: '¿Desea cancelar el pedido indicado?',
+                text: "¡No podrás revertir esto!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Si, cancelar pedido',
+                cancelButtonText: 'Cancelar',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+
+        })
+    </script>
 @endsection

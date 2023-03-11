@@ -132,6 +132,14 @@
                             <span>Gestión&nbsp;productos</span>
                         </div>
                     </a>
+
+                    <a href="{{ route('sales/management') }}"
+                       class="{{request()->routeIs('sales/management') ? 'selected' : ''}}">
+                        <div class="option">
+                            <i class="fa-solid fa-burger"></i>
+                            <span>Consolidado ventas</span>
+                        </div>
+                    </a>
                 @endif
 
                 @if(Auth::user()->rol->description == 'employee')
@@ -165,5 +173,6 @@
     <!-- Script sections -->
     @yield('indexEmployeeScript')
     @yield('indexProductScript')
+    @yield('indexSaleScript')
 </body>
 </html>
