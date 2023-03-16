@@ -1,8 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(count($errors)>0)
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container">
-
 
         <div class="text-center">
             <p>
@@ -27,6 +35,9 @@
                                 @endforeach
 
                             </select>
+                                <input name="saleDate" value="15-03-2023" hidden>
+                                <input name="totalCost" value="5000" hidden>
+                                <input name="saleStatus" value="0" hidden>
                             </div>
 
                             <div class="form-group mt-3" id="divselect2">
@@ -36,10 +47,10 @@
                             </div>
 
                             <div class="form-group mt-3" id="divnumber">
-                            <input class="cantidad" type="number" name="cantidad" value="1">
+                            <input class="cantidad" id="cantidad" type="number" name="cantidad" >
                             </div>
 
-                            <input type="submit" value="Registrar">
+                            <input type="submit" value="Registrar" >
                         </form>
                     </div>
                 </div>
@@ -76,12 +87,12 @@
                     <tr>
                         <td>{{$shipping->id}}</td>
                         <td>{{$shipping->saleDate}}</td>
-                        <td>{{$shipping->customer->documentNumber}}</td>
-                        <td>{{$shipping->customer->name}}</td>
-                        <td>{{$shipping->shippingOrder->address}}</td>
-                        <td>{{$shipping->shippingOrder->city}}</td>
-                        <td>{{$shipping->shippingOrder->department}}</td>
-                        <td>{{$shipping->paymentMethod->nameMethod}}</td>
+                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td>
+                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td>
+                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td>
+                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
+                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
+                        <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
                         <td>{{$shipping->totalCost}}</td>
                     </tr>
                 @endforeach
@@ -106,7 +117,10 @@
             (cate === '{{$prod->category_id}}') ? ( msg+= '<option value="{{$prod->id}}">{{$prod->name}}</option>') : "";
             @endforeach
                 prods.innerHTML=msg
+            return 0;
         }
+
+
 
     </script>
 @endsection

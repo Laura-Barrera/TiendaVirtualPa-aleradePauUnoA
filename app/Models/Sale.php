@@ -19,7 +19,7 @@ class Sale extends Model
         'id_payment_method',
         'saleDate',
         'totalCost',
-        'shipping_status'
+        'saleStatus'
     ];
 
     function shippingOrder(): BelongsTo

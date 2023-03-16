@@ -14,6 +14,6 @@ class ShippingOrdersSeeder extends Seeder
             'city' => 'Sogamoso',
             'department' => 'Boyacá'
         ]);
-        $shippingOrderDefault->sale();
+        $shippingOrderDefault->save();
     }
 }

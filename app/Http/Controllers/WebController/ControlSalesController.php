@@ -27,7 +27,7 @@ class ControlSalesController extends Controller
     public function indexRealizedSales(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = ShippingOrder::all();
+        $data['shipping_order'] = Sale::all();
         $data['category'] = Category::all();
         $data['product'] = Product::all();
         return view('components.registerSale.controlSales', $data);
@@ -35,17 +35,29 @@ class ControlSalesController extends Controller
 
     public function createSale(SaleUpdateRequest $request): Redirector|Application|RedirectResponse
     {
-        $sale = new Sale([
-            'id_shipping_order'=>0,
-            'id_customer'=>0,
-            'id_payment_method'=>0,
-            'saleDate'=>date('d-m-Y'),
-            'totalCost'=>0,
-            'shipping_status'=>true
-        ]);
+        $cantidad=$request->get('cantidad');
+        $producto=$request->get('producto');
 
-        $sale->save();
+        if ($cantidad>Product::all()->find($producto)->stockAmount){
+            return redirect('/sales/register')->with('message', 'AmountNotValid');
+        }else{
+            $totalCost=(Product::all()->find($producto)->price+((Product::all()->find($producto)->price*Product::all()->find($producto)->iva)/100)) * $cantidad;
+            $sale = new Sale([
+                'id_shipping_order'=>1,
+                'id_customer'=>1,
+                'id_payment_method'=>1,
+                'saleDate'=>date('Y-m-d'),
+                'totalCost'=>$totalCost,
+                'saleStatus'=>true
+            ]);
 
-        return redirect('/sales/management')->with('message', 'successfulSaleCreation');
+            $sale->save();
+            $producto= Product::all()->find($producto);
+            $producto->stockAmount=Product::all()->find($producto)->stockAmount-$cantidad;
+            $producto->save();
+
+            return redirect('/sales/register')->with('message', 'successfulSaleCreation');
+        }
+
     }
 }
