@@ -24,7 +24,7 @@ class SalesManagementController extends Controller
     public function index(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = ShippingOrder::all()->where('saleStatus', '=', true);
+        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', true);
         return view('components.saleManagement.index', $data);
     }
     public function details(Sale $sale): Factory|View|Application
@@ -41,7 +41,7 @@ class SalesManagementController extends Controller
 
     public function destroy(Sale $sale): Redirector|Application|RedirectResponse
     {
-        $orders = ShippingOrder::all()->where('sale_id', '=', $sale->getAttribute('id'));
+        $orders = Sale::all()->where('sale_id', '=', $sale->getAttribute('id'));
         foreach ($orders as $order)
             $order->delete();
         $sale->delete();
@@ -51,7 +51,7 @@ class SalesManagementController extends Controller
     public function indexRealizedSales(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = ShippingOrder::all();
+        $data['shipping_order'] = Sale::all();
         return view('components.realizedSalesManagement.index', $data);
     }
 
