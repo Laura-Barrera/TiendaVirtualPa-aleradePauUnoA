@@ -33,11 +33,12 @@
                     <tr>
                         <td>{{$shipping->id}}</td>
                         <td>{{$shipping->saleDate}}</td>
-                        <td>{{$shipping->customer->documentNumber}}</td>
-                        <td>{{$shipping->customer->name}}</td>
-                        <td>{{$shipping->shippingOrder->address}}</td>
-                        <td>{{$shipping->shippingOrder->city}}</td>
-                        <td>{{$shipping->shippingOrder->department}}</td>
+                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td>
+                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td>
+                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td>
+                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
+                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
+                        <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
                         <td>{{$shipping->totalCost}}</td>
                         <td>{{$shipping->saleStatus}}</td>
                         <td><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary">Visualizar
