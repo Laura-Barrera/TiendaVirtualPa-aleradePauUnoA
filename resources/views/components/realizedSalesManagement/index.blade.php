@@ -31,8 +31,8 @@
                     <tr>
                         <td>{{$shipping->id}}</td>
                         <td>{{$shipping->saleDate}}</td>
-                        <td>{{$shipping->customer->documentNumber}}</td>
-                        <td>{{$shipping->customer->name}}</td>
+                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td>
+                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td>
                         <td>{{$shipping->shippingOrder->address}}</td>
                         <td>{{$shipping->shippingOrder->city}}</td>
                         <td>{{$shipping->shippingOrder->department}}</td>
