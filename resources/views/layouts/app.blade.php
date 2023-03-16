@@ -143,6 +143,29 @@
                 @endif
 
                 @if(Auth::user()->rol->description == 'employee')
+                    <a href="{{ route('product/management') }}"
+                       class="{{request()->routeIs('product/management') ? 'selected' : ''}}">
+                        <div class="option">
+                            <i class="bi bi-archive"></i>
+                            <span>Gestión&nbsp;productos</span>
+                        </div>
+                    </a>
+
+                    <a href="{{ route('shippingOrder/management') }}"
+                       class="{{request()->routeIs('shippingOrder/management') ? 'selected' : ''}}">
+                        <div class="option">
+                            <i class="bi bi-arrow-down-up"></i>
+                            <span>Gestión&nbsp;domicilios</span>
+                        </div>
+                    </a>
+
+                    <a href="{{ route('sales/register') }}"
+                       class="{{request()->routeIs('sales/register') ? 'selected' : ''}}">
+                        <div class="option">
+                            <i class="bi bi-bag-check-fill"></i>
+                            <span>Control&nbsp;ventas</span>
+                        </div>
+                    </a>
 
                 @endif
 
@@ -171,6 +194,7 @@
         });
     </script>
     <!-- Script sections -->
+    @yield('js')
     @yield('indexEmployeeScript')
     @yield('indexProductScript')
     @yield('indexSaleScript')
