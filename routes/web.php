@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebController\ControlSalesController;
 use App\Http\Controllers\WebController\EmployeeManagementController;
 use App\Http\Controllers\WebController\HomeController;
 use App\Http\Controllers\WebController\ProductController;
@@ -20,8 +21,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [welcomeController::class, 'getStart']);
-Route::get('/nosotros', [welcomeController::class, 'getStartAbout']);
-Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
 
 Auth::routes();
 
@@ -45,8 +44,8 @@ Route::delete('/shippingOrder/management/changeStatus/{shipping}', [SalesManagem
 
 /* Rutas consolidado de ventas*/
 Route::get('/sales/management', [SalesManagementController::class, 'indexRealizedSales'])->name('sales/management');
-Route::get('/sales/register', [\App\Http\Controllers\WebController\ControlSalesController::class, 'indexRealizedSales'])->name('sales/register');
-Route::post('/sales/create', [\App\Http\Controllers\WebController\ControlSalesController::class, 'createSale'])->name('sales/create');
+Route::get('/sales/register', [ControlSalesController::class, 'indexRealizedSales'])->name('sales/register');
+Route::post('/sales/create', [ControlSalesController::class, 'createSale'])->name('sales/create');
 
 /* Rutas gestión productos*/
 Route::get('/product/management', [ProductController::class, 'index'])->name('product/management');
