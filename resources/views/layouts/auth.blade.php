@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="favicon.png">
 
     <!-- Title -->
-    <title>11&6 GASTRO PUB</title>
+    <title>PAÑALERA DE PAU UNO A</title>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -54,12 +54,6 @@
                         @if (Route::has('login'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
-                            </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
                             </li>
                         @endif
                     @else

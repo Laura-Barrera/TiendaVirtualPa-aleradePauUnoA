@@ -16,7 +16,7 @@
 
             <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
 
-                <thead class="table text-center" style="background: #202022; color: white">
+                <thead class="table text-center" style="background: #d78aea; color: black">
 
                 <tr style="border-color: black">
                     <th>ID Pedido</th>
@@ -28,7 +28,7 @@
 
                 </thead>
 
-                <tbody class="text-center">
+                <tbody class="text-center" style="background-color: #F9F9F9">
                 @foreach ($details as $detail)
                     <tr>
                         <td>{{$detail->sale_id}}</td>
@@ -44,7 +44,7 @@
 
         </div>
 
-        <a class="btn btn-primary" href="{{url('shippingOrder/management')}}" style="float: right;">Regresar</a>
+        <a class="btn btn-primary" href="{{url('shippingOrder/management')}}" style="float: right;" id="button">Regresar</a>
 
     </div>
 @endsection

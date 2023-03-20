@@ -45,6 +45,8 @@ Route::delete('/shippingOrder/management/changeStatus/{shipping}', [SalesManagem
 
 /* Rutas consolidado de ventas*/
 Route::get('/sales/management', [SalesManagementController::class, 'indexRealizedSales'])->name('sales/management');
+Route::get('/sales/register', [\App\Http\Controllers\WebController\ControlSalesController::class, 'indexRealizedSales'])->name('sales/register');
+Route::post('/sales/create', [\App\Http\Controllers\WebController\ControlSalesController::class, 'createSale'])->name('sales/create');
 
 /* Rutas gestión productos*/
 Route::get('/product/management', [ProductController::class, 'index'])->name('product/management');

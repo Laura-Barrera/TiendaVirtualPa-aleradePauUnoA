@@ -6,11 +6,11 @@
         <div class="col-11 col-md-6 mx-auto">
 
             <form action="{{url('employee/store')}}" method="post" enctype="multipart/form-data">
-            @csrf
+                @csrf
 
-            @include('components.employeeManagement.form', ['mod'=>'Crear'] )
+                @include('components.employeeManagement.form', ['mod'=>'Crear'] )
 
-            <!-- Email -->
+                <!-- Email -->
                 <div class="form-group mt-3" id="divEmail">
                     <label for="emailInput" class="col-md-5 text-md-right">{{ __('Correo') }}</label>
                     <div class="col-md-6">
@@ -35,8 +35,8 @@
                 </div>
 
                 <div class="mt-4 mb-5">
-                    <input type="submit" class="btn btn-success" value="Crear empleado">
-                    <a class="btn btn-primary" href="{{url('employee/management')}}">Regresar</a>
+                    <input type="submit" class="btn btn-success" value="Crear empleado" id="button">
+                    <a class="btn btn-primary" href="{{url('employee/management')}}" id="button2">Regresar</a>
                 </div>
 
             </form>

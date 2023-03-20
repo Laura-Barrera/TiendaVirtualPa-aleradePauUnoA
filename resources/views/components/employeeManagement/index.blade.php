@@ -5,13 +5,13 @@
 
         <h1 class="text-center mb-4" style="font-family: 'Arial Rounded MT Bold', sans-serif">Empleados</h1>
 
-        <a href="{{url('employee/create')}}" class="btn btn-success">Registrar nuevo empleado</a>
+        <a href="{{url('employee/create')}}" class="btn btn-success" id="button">Registrar nuevo empleado</a>
 
         <div class="mt-3 mb-3" style="overflow-x:auto;">
 
             <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
 
-                <thead class="table text-center" style="background: #202022; color: white">
+                <thead class="table text-center" style="background: #d78aea; color: black">
 
                 <tr style="border-color: black">
                     <th>ID</th>
@@ -29,7 +29,7 @@
 
                 </thead>
 
-                <tbody class="text-center">
+                <tbody class="text-center" style="background-color: #F9F9F9">
 
                 @foreach ($employees as $employee)
 
@@ -46,12 +46,12 @@
                         <td>{{$employee->user_id}}</td>
                         <td>
 
-                            <a href="{{url('employee/edit/'.$employee->id)}}" class="btn btn-primary">Editar</a>
+                            <a href="{{url('employee/edit/'.$employee->id)}}" class="btn btn-primary" id="button">Editar</a>
                             <form action="{{url('/employee/destroy/'.$employee->id)}}"
                                   class="d-inline confirmation_alert" method='post'>
                                 @csrf
                                 {{method_field('DELETE')}}
-                                <input type='submit' value="Borrar" class="btn btn-danger">
+                                <input type='submit' value="Borrar" class="btn btn-danger" id="button3">
                             </form>
                         </td>
 

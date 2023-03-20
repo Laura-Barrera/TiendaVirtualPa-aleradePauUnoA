@@ -7,9 +7,21 @@
 
         <div class="mt-3 mb-3" style="overflow-x:auto;">
 
+            <p>
+            <table>
+                <tr>
+                    <td width="100"><b>FECHA</b></td>
+                    <td width="100">
+                        <input class="form-control" type="date" max="<?php echo date("Y-m-d"); ?>"
+                               value="" name="" required>
+                    </td>
+                </tr>
+            </table>
+            </p>
+
             <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
 
-                <thead class="table text-center" style="background: #202022; color: white">
+                <thead class="table text-center" style="background: #d78aea; color: black">
 
                 <tr style="border-color: black">
                     <th>N° Pedido</th>
@@ -25,10 +37,10 @@
 
                 </thead>
 
-                <tbody class="text-center">
+                <tbody class="text-center" style="background-color: #F9F9F9">
 
                 @foreach ($shipping_order as $shipping)
-                    <tr>
+                    <tr >
                         <td>{{$shipping->id}}</td>
                         <td>{{$shipping->saleDate}}</td>
                         <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td>

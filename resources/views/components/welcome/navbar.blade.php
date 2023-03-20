@@ -1,7 +1,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg custom-navbar" id="mainNav">
     <div class="container">
-        <img src="{{asset('img/logos/logo.png')}}" id="logo" width="100px" alt=""/>
+        <img src="{{asset('img/about/aviso.png')}}" id="logo" width="350px" alt=""/>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="color: black">
             Menu
             <i class="fas fa-bars ms-1"></i>
@@ -28,17 +28,6 @@
 
                                 <li><a class="button-select dropdown-item" href="{{ route('login') }}"
                                        data-bs-toggle="modal" data-bs-target="#loginModal"> Iniciar Sesión</a></li>
-
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                @if (Route::has('register'))
-                                    <li><a class="button-select dropdown-item" href="{{ route('register') }}"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#registerModal">Registrarse</a></li>
-                                @endif
-
                             </ul>
                         </li>
 

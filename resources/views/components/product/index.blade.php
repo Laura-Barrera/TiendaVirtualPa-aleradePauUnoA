@@ -5,13 +5,13 @@
 
         <h1 class="text-center mb-4" style="font-family: 'Arial Rounded MT Bold', sans-serif">Productos</h1>
 
-        <a href="{{url('product/create')}}" class="btn btn-success">Registrar nuevo producto</a>
+        <a href="{{url('product/create')}}" class="btn btn-success" id="button">Registrar nuevo producto</a>
 
         <div class="mt-3 mb-3" style="overflow-x:auto;">
 
             <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
 
-                <thead class="table text-center" style="background: #202022; color: white">
+                <thead class="table text-center" style="background: #d78aea; color: black">
 
                 <tr style="border-color: black">
                     <th>ID</th>
@@ -28,7 +28,7 @@
 
                 </thead>
 
-                <tbody class="text-center align-middle">
+                <tbody class="text-center align-middle" style="background-color: #F9F9F9">
 
                 @foreach ($products as $product)
 
@@ -50,13 +50,13 @@
 
                         <td>
 
-                            <a href="{{url('product/edit/'.$product->id)}}" class="btn btn-primary">Editar</a>
+                            <a href="{{url('product/edit/'.$product->id)}}" class="btn btn-primary" id="button2">Editar</a>
 
                             <form action="{{url('/product/destroy/'.$product->id)}}" class="d-inline confirmation_alert"
                                   method='post'>
                                 @csrf
                                 {{method_field('DELETE')}}
-                                <input type='submit' value="Borrar" class="btn btn-danger">
+                                <input type='submit' value="Borrar" class="btn btn-danger" id="button3">
                             </form>
 
                         </td>
