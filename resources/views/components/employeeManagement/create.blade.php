@@ -13,7 +13,7 @@
                 <!-- Email -->
                 <div class="form-group mt-3" id="divEmail">
                     <label for="emailInput" class="col-md-5 text-md-right">{{ __('Correo') }}</label>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <input id="emailInput" type="email" class="custom-form form-control" name="email"
                                value="{{ old('email') }}" required autocomplete="email">
                         <span class="invalid-feedback" role="alert" id="emailError">
@@ -25,7 +25,7 @@
                 <!-- Password -->
                 <div class="form-group mt-3" id="divPasswd">
                     <label for="passwordInput" class="col-md-5 text-md-right">{{ __('Contraseña') }}</label>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <input id="passwordInput" type="password" class="custom-form form-control" name="password"
                                required autocomplete="new-password">
                         <span class="invalid-feedback" role="alert" id="passwordError">

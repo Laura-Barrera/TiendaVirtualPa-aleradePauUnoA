@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Database\Seeders\Web\CategorySeeder;
+use Database\Seeders\Web\CustomerSeeder;
+use Database\Seeders\Web\PaymentMethodSeeder;
 use Database\Seeders\Web\RolSeeder;
 use Database\Seeders\Web\ShippingOrdersSeeder;
 use Database\Seeders\Web\UserSeeder;
@@ -21,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(ShippingOrdersSeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(PaymentMethodSeeder::class);
     }
 }
