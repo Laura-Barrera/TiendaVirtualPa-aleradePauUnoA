@@ -23,16 +23,11 @@ class Product extends Model
         'referenceNumber',
         'iva',
         'image',
-        'category_id',
-        'id_salesRecord'
+        'category_id'
     ];
 
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
-    }
-    public function sales(): HasMany
-    {
-        return $this->hasMany(Sales::class);
     }
 }

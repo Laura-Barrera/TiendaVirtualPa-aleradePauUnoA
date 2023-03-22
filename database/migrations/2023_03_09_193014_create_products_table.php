@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 15, 0);
             $table->integer('stockAmount')->nullable();
             $table->string('referenceNumber');
-            $table->integer('iva');
+            $table->float('iva');
             $table->string('image');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
