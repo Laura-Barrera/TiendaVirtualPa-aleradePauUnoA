@@ -43,7 +43,7 @@
 
 <div class="form-group mt-3">
     <label for="iva">Iva</label>
-    <input type="number" class="form-control" name="iva" value="{{isset($product->iva)?$product->iva:old('iva')}}">
+    <input type="number" step="0.1" class="form-control" name="iva" value="{{isset($product->iva)?$product->iva:old('iva')}}">
 </div>
 
 <div class="form-group mt-3">
