@@ -194,6 +194,7 @@
         });
     </script>
     <!-- Script sections -->
+    @yield('js2)
     @yield('js')
     @yield('indexEmployeeScript')
     @yield('indexProductScript')
