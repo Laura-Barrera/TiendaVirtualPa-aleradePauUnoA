@@ -382,7 +382,7 @@ class ProductSeeder extends Seeder
 
         //Categoria Zapatos
         $product31 = new Product([
-            'name' => 'Botas NT T20',
+            'name' => 'Botas niño NT T20',
             'description' => 'Botas No Tuerce tipo Brahama para niño color amarillo',
             'price' => 25000,
             'stockAmount' => 2,
@@ -430,7 +430,7 @@ class ProductSeeder extends Seeder
         $product34->save();
 
         $product35 = new Product([
-            'name' => 'Tenis NT niña T21',
+            'name' => 'Tenis NT niño T21',
             'description' => 'Tenis tipo converse para niño color azul',
             'price' => 25000,
             'stockAmount' => 4,
