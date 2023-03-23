@@ -33,9 +33,7 @@
 </head>
 <body id="body" class="body_move">
     <div id="app">
-
         <header>
-
             <div class="icon__menu">
                 <i class="fas fa-bars" id="btn_open"></i>
             </div>

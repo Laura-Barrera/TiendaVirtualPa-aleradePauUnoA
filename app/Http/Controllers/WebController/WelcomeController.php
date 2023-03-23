@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\WebController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
     function getStart(){
-        return view('components.welcome.start');
+        $products =  Product::all();
+        return view('components.welcome.start' , ['products' => $products]);
     }
 
     function getStartAbout(){
