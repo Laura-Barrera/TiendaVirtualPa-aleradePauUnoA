@@ -10,7 +10,7 @@
 
                 <div class="carousel-inner custom-carousel-inner">
 
-                    @foreach($products->slice(29, 34) as $product)
+                    @foreach($products->slice(30, 35) as $product)
 
                         <div
                             class="carousel-item custom-carousel-item @if($product == $products[0]) active @endif">

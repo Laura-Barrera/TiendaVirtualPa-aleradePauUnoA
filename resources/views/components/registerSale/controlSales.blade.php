@@ -22,49 +22,50 @@
             </p>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
-                    <table class="d-grid gap-2">
+                    <div class="d-grid gap-2">
                         <form action="{{route('sales/create')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <table>
-                                <tr>
-                                    <td>Categoria</td>
-                                    <td>
-                                        <select id="select" class="form-select" aria-label="Default select example" name="category"
-                                                onchange="getCategory()">
+                            <div class="row" id="divselect1">
+                                <div class="col-3">
+                                    <span class="input-group-addon"><b>{{ __('Categoria') }}</b></span>
+                                </div>
+                                <div class="col-9">
+                                    <select id="select" class="form-select" aria-label="Default select example" name="category"
+                                            onchange="getCategory()">
 
-                                            @foreach ($category as $cat)
+                                        @foreach ($category as $cat)
 
-                                                <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                            @endforeach
+                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                        @endforeach
 
-                                        </select>
-                                        <input name="saleDate" value="15-03-2023" hidden>
-                                        <input name="totalCost" value="5000" hidden>
-                                        <input name="saleStatus" value="0" hidden>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Producto</td>
-                                    <td>
-                                        <select id="productos" class="form-select" aria-label="Default select example" name="producto">
-
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Cantidad</td>
-                                    <td>
-                                        <input class="cantidad" id="cantidad" type="number" name="cantidad" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <input type="submit" class="btn btn-success" value="Registrar" id="button">
-                                    </td>
-                                </tr>
-                            </table>
+                                    </select>
+                                    <input name="saleDate" value="15-03-2023" hidden>
+                                    <input name="totalCost" value="5000" hidden>
+                                    <input name="saleStatus" value="0" hidden>                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row" id="divselect2">
+                                <div class="col-3">
+                                    <span class="input-group-addon"><b>{{ __('Producto') }}</b></span>
+                                </div>
+                                <div class="col-9">
+                                    <select id="productos" class="form-select" aria-label="Default select example" name="producto">
+                                    </select>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row" id="divnumber">
+                                <div class="col-3">
+                                    <span class="input-group-addon"><b>{{ __('Cantidad') }}</b></span>
+                                </div>
+                                <div class="col-9">
+                                    <input class="cantidad col-12" id="cantidad" type="number" name="cantidad" >
+                                </div>
+                            </div>
+                            <p></p>
+                            <input class="btn btn-primary" type="submit" value="Registrar" id="button2" >
                         </form>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,7 +78,7 @@
 
             <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
 
-                <thead class="table text-center" style="background: #202022; color: white">
+                <thead class="table text-center" style="background: #d78aea; color: black">
 
                 <tr style="border-color: black">
                     <th>N° Pedido</th>
@@ -93,7 +94,7 @@
 
                 </thead>
 
-                <tbody class="text-center">
+                <tbody class="text-center" style="background-color: #F9F9F9">
 
                 @foreach ($shipping_order as $shipping)
                     <tr>

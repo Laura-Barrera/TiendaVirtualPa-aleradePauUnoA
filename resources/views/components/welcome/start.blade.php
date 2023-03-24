@@ -172,7 +172,7 @@
                                     <div class="modal-content" style="background: rgba(255,255,255,0.9)">
                                         <div class="modal-header justify-content-xl-end">
 
-                                            <button type="button" class="close" data-dismiss="portfolioModal1" aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="productModal{{$product->id}}" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -194,7 +194,7 @@
                                                         <h5 class="fw-bolder mt-4">Descripción:</h5>
                                                         <p>{{$product->description}}</p>
                                                         <h5 class="mt-4">Precio
-                                                            unitario:&nbsp;<strong>$&nbsp;{{number_format($product->stockAmount, 0, ',', '.')}}</strong>
+                                                            unitario:&nbsp;<strong>$&nbsp;{{number_format($product->price, 0, ',', '.')}}</strong>
                                                         </h5>
                                                         <h5 class="mt-4">Cantidad:
                                                         <input type="number" value="0" min="0" max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>

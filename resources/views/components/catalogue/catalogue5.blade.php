@@ -1,4 +1,4 @@
-@section('start2')
+@section('start5')
     <div class="container">
         <div class="text-center">
             <h3 class="section-heading text-uppercase">Ropa para niño</h3>
