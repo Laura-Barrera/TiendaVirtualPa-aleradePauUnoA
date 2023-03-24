@@ -45,21 +45,17 @@
 
                         <!-- Product Modal -->
 
-                        <div class="portfolio-modal modal fade mt-5" id="productModal{{$product->id}}"
+                        <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
                              tabindex="-1"
                              aria-labelledby="portfolioModal1"
                              aria-hidden="true">
 
                             <div class="modal-dialog modal-lg">
-
+                                <div class="modal-header" style="background: rgba(255,255,255,0.9)">
+                                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
                                 <div class="modal-content" style="background: rgba(255,255,255,0.9)">
-                                    <div class="modal-header justify-content-xl-end">
-
-                                        <button type="button" class="close" data-dismiss="portfolioModal1"
-                                                aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
                                     <div class="modal-body">
 
                                         <div class="container">
