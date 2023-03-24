@@ -72,6 +72,6 @@
 </div>
 
 <div class="mt-4 mb-5">
-    <input type="submit" class="btn btn-success" value="{{$mod}} producto">
-    <a class="btn btn-primary" href="{{url('product/management')}}">Regresar</a>
+    <input type="submit" class="btn btn-success" id="button" value="{{$mod}} producto">
+    <a class="btn btn-primary" href="{{url('product/management')}}" id="button2">Regresar</a>
 </div>

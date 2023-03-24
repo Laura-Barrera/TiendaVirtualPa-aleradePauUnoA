@@ -189,8 +189,9 @@
                                                         <h5 class="fw-bolder mt-4">Descripción:</h5>
                                                         <p>{{$product->description}}</p>
                                                         <h5 class="mt-4">Precio
-                                                            unitario:&nbsp;<strong>$&nbsp;{{number_format($product->price, 0, ',', '.')}}</strong>
+                                                            unitario:&nbsp;<strong>$&nbsp;{{number_format($product->stockAmount, 0, ',', '.')}}</strong>
                                                         </h5>
+                                                        <input type="number" value="0" min="0" max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>
                                                     </div>
 
                                                 </div>

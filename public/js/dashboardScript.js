@@ -1,13 +1,13 @@
-//Ejecutar función en el evento click
+//Ejecutar fu"nción en el evento click
 let btn_open = document.getElementById("btn_open");
 btn_open.addEventListener("click", open_close_menu);
-
 //Declaramos variables
 let side_menu = document.getElementById("menu_side");
 let body = document.getElementById("body");
 
 //Evento para mostrar y ocultar menú
 function open_close_menu() {
+
     body.classList.toggle("body_move");
     side_menu.classList.toggle("menu__side_move");
 }
