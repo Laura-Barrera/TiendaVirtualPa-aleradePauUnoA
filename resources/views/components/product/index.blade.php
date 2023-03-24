@@ -112,10 +112,10 @@
                 text: "¡No podrás revertir esto!",
                 icon: 'question',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#a1bcff',
                 confirmButtonText: 'Si, borrar',
                 cancelButtonText: 'Cancelar',
-                cancelButtonColor: '#d33',
+                cancelButtonColor: '#d78aea',
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.submit();

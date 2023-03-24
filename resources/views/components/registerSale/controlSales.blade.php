@@ -50,7 +50,8 @@
                                 <input class="cantidad" id="cantidad" type="number" name="cantidad" >
                             </div>
 
-                            <input type="submit" value="Registrar" >
+                            <br>
+                            <input type="submit" class="btn btn-success" value="Registrar" id="button">
                         </form>
                     </div>
                 </div>

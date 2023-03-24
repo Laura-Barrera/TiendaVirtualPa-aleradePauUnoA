@@ -56,7 +56,7 @@ class ControlSalesController extends Controller
             $producto->stockAmount=(Product::all()->find($producto)->stockAmount)-$cantidad;
             $producto->save();
 
-            return redirect('/sales/register')->with('message', 'successfulSaleCreation');
+            return redirect('/sales/register')->with('message', 'successfulEmployeeCreation');
         }
 
     }

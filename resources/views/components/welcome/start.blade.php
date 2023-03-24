@@ -19,15 +19,15 @@
         .custom-product-selection-button:hover {
             color: #000000;
             font-weight: 600;
-            border-color: #0dcaf0;
-            background:rgba(138,221,45,0);
+            border-color: #d78aea;
+            background-color:#d78aea;
         }
         .custom-product-selection-button:focus {
             width: 80%;
             color: black;
             font-size: 15px;
             border-color: #ffffff80;
-            background-color: #0dcaf0;
+            background-color: #d78aea;
             box-shadow: none;
         }
         .custom-product-selection-button:focus:hover {
@@ -191,14 +191,16 @@
                                                         <h5 class="mt-4">Precio
                                                             unitario:&nbsp;<strong>$&nbsp;{{number_format($product->stockAmount, 0, ',', '.')}}</strong>
                                                         </h5>
+                                                        <h5 class="mt-4">Cantidad:
                                                         <input type="number" value="0" min="0" max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>
+                                                        </h5>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="row d-flex justify-content-center mt-3 mt-md-0">
                                                     <a href="{{url('/addProduct/' . $product->id)}}"
-                                                       class="btn btn-info w-50">Agregar</a>
+                                                       class="btn custom-product-selection-button w-25">Agregar</a>
                                                 </div>
 
                                             </div>
