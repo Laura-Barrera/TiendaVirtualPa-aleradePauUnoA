@@ -69,7 +69,7 @@
                                                 <div class="col-12 col-md-6 mt-3 mb-3 rounded-3"
                                                      style="background-color: white">
                                                     <img class="img-fluid mt-5 mb-5"
-                                                         src="{{asset('storage').'catalogue.blade.php/'.$product->image}}"
+                                                         src="{{ asset('storage/' . $product->image) }}"
                                                          alt="product"/>
                                                 </div>
 

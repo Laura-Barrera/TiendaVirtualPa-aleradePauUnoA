@@ -37,7 +37,6 @@ class ControlSalesController extends Controller
     {
         $cantidad=$request->get('cantidad');
         $producto=$request->get('producto');
-
         if ($cantidad>Product::all()->find($producto)->stockAmount){
             return redirect('/sales/register')->with('message', 'AmountNotValid');
         }else{
@@ -56,7 +55,7 @@ class ControlSalesController extends Controller
             $producto->stockAmount=(Product::all()->find($producto)->stockAmount)-$cantidad;
             $producto->save();
 
-            return redirect('/sales/register')->with('message', 'successfulEmployeeCreation');
+            return redirect('/sales/register')->with('message', 'successfulPSalesCreated');
         }
 
     }

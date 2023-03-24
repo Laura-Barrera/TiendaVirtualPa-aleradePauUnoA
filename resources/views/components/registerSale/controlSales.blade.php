@@ -59,10 +59,10 @@
                                     <span class="input-group-addon"><b>{{ __('Cantidad') }}</b></span>
                                 </div>
                                 <div class="col-9">
-                                    <input class="cantidad col-12" id="cantidad" type="number" name="cantidad" >
+                                    <input class="cantidad col-12" id="cantidad" type="number" name="cantidad" required>
                                 </div>
                             </div>
-                            <p></p>
+                            <br>
                             <input class="btn btn-primary" type="submit" value="Registrar" id="button2" >
                         </form>
                     </div>
@@ -133,7 +133,20 @@
             return 0;
         }
 
+        @if(session('message') == 'successfulPSalesCreated')
+        Swal.fire({
+            title: 'Venta agregada correctamente',
+            icon: 'success',
+            confirmButtonColor: '#a1bcff',
+        })
+        @endif
 
-
+        @if(session('message') == 'AmountNotValid')
+        Swal.fire({
+            title: 'No se pudo registrar la venta. Stock insuficiente!!',
+            icon: 'warning',
+            confirmButtonColor: '#d78aea',
+        })
+        @endif
     </script>
 @endsection

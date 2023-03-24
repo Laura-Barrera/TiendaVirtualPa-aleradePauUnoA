@@ -39,13 +39,15 @@ class SalesManagementController extends Controller
         return redirect('shippingOrder/management')->with('message', 'successfulSaleUpdate');
     }
 
-    public function destroy(Sale $sale): Redirector|Application|RedirectResponse
+    public function destroy(Sale $shipping): Redirector|Application|RedirectResponse
     {
-        $orders = Sale::all()->where('sale_id', '=', $sale->getAttribute('id'));
-        foreach ($orders as $order)
-            $order->delete();
-        $sale->delete();
-        return redirect('employee/management')->with('message', 'successfulSaleDelete');
+        $allShippings = ShippingOrder::all()->where('id', '=', $shipping->getAttribute('id'));
+        foreach ($allShippings as $shop)
+            if ($shop->getAttribute('id') != 1){
+                $shop->delete();
+            }
+        $shipping->delete();
+        return redirect('shippingOrder/management')->with('message', 'successfulSaleDelete');
     }
 
     public function indexRealizedSales(): \Illuminate\Contracts\View\Factory|View|Application
