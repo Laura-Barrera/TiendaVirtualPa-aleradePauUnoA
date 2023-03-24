@@ -15,45 +15,56 @@
         <div class="text-center">
             <p>
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                   aria-expanded="false" aria-controls="collapseExample" onclick="getCategory()">
+                   aria-expanded="false" aria-controls="collapseExample" onclick="getCategory()" id="button">
                     Registrar venta ahora
                 </a>
 
             </p>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
-                    <div class="d-grid gap-2">
+                    <table class="d-grid gap-2">
                         <form action="{{route('sales/create')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group mt-3" id="divselect1">
-                                <select id="select" class="form-select" aria-label="Default select example" name="category"
-                                        onchange="getCategory()">
+                            <table>
+                                <tr>
+                                    <td>Categoria</td>
+                                    <td>
+                                        <select id="select" class="form-select" aria-label="Default select example" name="category"
+                                                onchange="getCategory()">
 
-                                    @foreach ($category as $cat)
+                                            @foreach ($category as $cat)
 
-                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                    @endforeach
+                                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                            @endforeach
 
-                                </select>
-                                <input name="saleDate" value="15-03-2023" hidden>
-                                <input name="totalCost" value="5000" hidden>
-                                <input name="saleStatus" value="0" hidden>
-                            </div>
+                                        </select>
+                                        <input name="saleDate" value="15-03-2023" hidden>
+                                        <input name="totalCost" value="5000" hidden>
+                                        <input name="saleStatus" value="0" hidden>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Producto</td>
+                                    <td>
+                                        <select id="productos" class="form-select" aria-label="Default select example" name="producto">
 
-                            <div class="form-group mt-3" id="divselect2">
-                                <select id="productos" class="form-select" aria-label="Default select example" name="producto">
-
-                                </select>
-                            </div>
-
-                            <div class="form-group mt-3" id="divnumber">
-                                <input class="cantidad" id="cantidad" type="number" name="cantidad" >
-                            </div>
-
-                            <br>
-                            <input type="submit" class="btn btn-success" value="Registrar" id="button">
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad</td>
+                                    <td>
+                                        <input class="cantidad" id="cantidad" type="number" name="cantidad" >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="submit" class="btn btn-success" value="Registrar" id="button">
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>

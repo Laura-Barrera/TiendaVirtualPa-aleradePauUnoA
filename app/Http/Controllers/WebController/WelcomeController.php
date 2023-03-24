@@ -18,6 +18,7 @@ class WelcomeController extends Controller
     }
 
     function getStartCatalogue(){
-        return view('components.catalogue.startcatalogue');
+        $products =  Product::all();
+        return view('components.catalogue.startcatalogue', ['products' => $products]);
     }
 }
