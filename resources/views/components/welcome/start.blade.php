@@ -170,7 +170,12 @@
                                 <div class="modal-dialog modal-lg">
 
                                     <div class="modal-content" style="background: rgba(255,255,255,0.9)">
+                                        <div class="modal-header justify-content-xl-end">
 
+                                            <button type="button" class="close" data-dismiss="portfolioModal1" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                         <div class="modal-body">
 
                                             <div class="container">
