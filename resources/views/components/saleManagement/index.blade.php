@@ -38,10 +38,10 @@
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td>
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
-                        <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
                         <td>{{$shipping->totalCost}}</td>
                         <td>{{$shipping->saleStatus}}</td>
-                        <td><p><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary" id="button">Visualizar Detalle</a></p>
+                        <td><p><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary" id="button">Visualizar Detalle</a></p></td>
+                        <td>
                             <p><a href="{{url('/shippingOrder/management/changeStatus/'.$shipping->id)}}" class="btn btn-primary" id="button2">Cambiar Estado</a></p>
 
                             <form action="{{url('/shippingOrder/management/destroy/'.$shipping->id)}}"

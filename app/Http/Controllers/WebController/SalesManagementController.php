@@ -24,7 +24,7 @@ class SalesManagementController extends Controller
     public function index(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', true);
+        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', false);
         return view('components.saleManagement.index', $data);
     }
     public function details(Sale $sale): Factory|View|Application
@@ -53,7 +53,7 @@ class SalesManagementController extends Controller
     public function indexRealizedSales(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = Sale::all();
+        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', true);
         return view('components.realizedSalesManagement.index', $data);
     }
 
