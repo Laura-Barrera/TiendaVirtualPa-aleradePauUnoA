@@ -37,7 +37,7 @@
 </head>
 
 <body>
-
+<a href="/order" class="btn-flotante"><i class="bi bi-cart4 fa-2x"></i></a>
 <!-- NAVBAR -->
 @include('components.welcome.navbar')
 @include('components.catalogue.search')
