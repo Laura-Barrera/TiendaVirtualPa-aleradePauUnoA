@@ -75,7 +75,7 @@
         Swal.fire({
             title: 'Empleado agregado correctamente',
             icon: 'success',
-            confirmButtonColor: '#199605',
+            confirmButtonColor: '#a1bcff',
         })
         @endif
 
@@ -83,7 +83,7 @@
         Swal.fire({
             title: 'Empleado actualizado correctamente',
             icon: 'success',
-            confirmButtonColor: '#199605',
+            confirmButtonColor: '#a1bcff',
         })
         @endif
 
@@ -91,7 +91,7 @@
         Swal.fire({
             title: 'Empleado eliminado correctamente',
             icon: 'success',
-            confirmButtonColor: '#199605',
+            confirmButtonColor: '#a1bcff',
         })
         @endif
 

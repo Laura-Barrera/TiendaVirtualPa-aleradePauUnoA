@@ -32,32 +32,21 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/globalStyles.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/slideStyles.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
-<a href="/order" class="btn-flotante"><i class="bi bi-cart4 fa-2x"></i></a>
+
 <!-- NAVBAR -->
 @include('components.welcome.navbar')
-@include('components.catalogue.search')
-@include('components.catalogue.catalogue')
-@include('components.catalogue.catalogue1')
-@include('components.catalogue.catalogue2')
-@include('components.catalogue.catalogue3')
-@include('components.catalogue.catalogue4')
-@include('components.catalogue.catalogue5')
-@include('components.catalogue.catalogue6')
+
+
 @include('components.welcome.login')
+@include('components.welcome.order')
+
 
 <!-- CONTENT -->
-@yield('start')
-@yield('start1')
-@yield('start2')
-@yield('start3')
-@yield('start4')
-@yield('start5')
-@yield('start6')
+
 {{--@yield('menu')
 @yield('makeOrder')--}}
 
@@ -65,14 +54,9 @@
 @include('components.welcome.footer')
 
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="{{asset('js/app.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
     window.addEventListener( "pageshow", function ( event ) {
@@ -86,12 +70,9 @@
 </script>
 
 <!-- Script sections -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-
 @yield('loginScript')
-@yield('makeOrderScript0')
-@yield('makeOrderScript1')
+@yield('registerScript')
+
 </body>
 
 </html>

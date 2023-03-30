@@ -12,6 +12,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="/catalogo">Catalogo</a></li>
                 <li class="nav-item"><a class="nav-link" href="/nosotros">Nosotros</a></li>
+
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\WebController\ControlSalesController;
 use App\Http\Controllers\WebController\EmployeeManagementController;
 use App\Http\Controllers\WebController\HomeController;
+use App\Http\Controllers\WebController\OrderController;
 use App\Http\Controllers\WebController\ProductController;
 use App\Http\Controllers\WebController\SalesManagementController;
 use App\Http\Controllers\WebController\WelcomeController;
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [welcomeController::class, 'getStart']);
 Route::get('/nosotros', [welcomeController::class, 'getStartAbout']);
 Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
+Route::get('/order', [welcomeController::class, 'getOrderDetail']);
+Route::get('/order/{category}', [OrderController::class, 'getOrderDetail'])->name('order');
+
 
 Auth::routes();
 
@@ -42,7 +46,7 @@ Route::delete('/employee/destroy/{employee}', [EmployeeManagementController::cla
 Route::get('/shippingOrder/management', [SalesManagementController::class, 'index'])->name('shippingOrder/management');
 Route::get('/shippingOrder/management/{shipping}', [SalesManagementController::class, 'details']);
 Route::patch('/shippingOrder/management/changeStatus/{shipping}', [SalesManagementController::class, 'changeStatus']);
-Route::delete('/shippingOrder/management/changeStatus/{shipping}', [SalesManagementController::class, 'destroy']);
+Route::delete('/shippingOrder/management/destroy/{shipping}', [SalesManagementController::class, 'destroy']);
 
 /* Rutas consolidado de ventas*/
 Route::get('/sales/management', [SalesManagementController::class, 'indexRealizedSales'])->name('sales/management');
@@ -59,4 +63,10 @@ Route::delete('/product/destroy/{product}', [ProductController::class, 'destroy'
 
 /* Rutas empleado módulo */
 Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeController::class, 'show'])->name('employee/data');
+
+/*Rutas para los pedidos*/
+Route::get('/makeOrder/{category}', [OrderController::class, 'getMakeOrder'])->name('makeOrder');
+Route::get('/addProduct/{product}', [OrderController::class, 'addProduct']);
+Route::delete('/removeProduct', [OrderController::class, 'removeProduct']);
+
 

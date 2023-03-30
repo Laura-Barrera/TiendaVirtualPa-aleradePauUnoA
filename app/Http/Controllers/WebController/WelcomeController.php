@@ -21,4 +21,8 @@ class WelcomeController extends Controller
         $products =  Product::all();
         return view('components.catalogue.startcatalogue', ['products' => $products]);
     }
+
+    function getOrderDetail(){
+        return view('components.order.orderDetail');
+    }
 }

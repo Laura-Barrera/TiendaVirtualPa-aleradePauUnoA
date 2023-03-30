@@ -5,10 +5,12 @@
 
             overflow-x: hidden;
         }
+
         .custom-menu-section {
             margin-top: 6rem;
             margin-bottom: 6rem;
         }
+
         .custom-product-selection-button {
             width: 80%;
             color: black;
@@ -16,12 +18,14 @@
 
             background-color: #0dcaf0;
         }
+
         .custom-product-selection-button:hover {
             color: #000000;
             font-weight: 600;
             border-color: #d78aea;
-            background-color:#d78aea;
+            background-color: #d78aea;
         }
+
         .custom-product-selection-button:focus {
             width: 80%;
             color: black;
@@ -30,6 +34,7 @@
             background-color: #d78aea;
             box-shadow: none;
         }
+
         .custom-product-selection-button:focus:hover {
             color: #000000;
             font-weight: 600;
@@ -37,47 +42,59 @@
             background-color: #0dcaf0;
             box-shadow: 0 0 15px #ffffff80;
         }
+
         @media (min-width: 768px) {
             .custom-menu-section {
                 margin-top: 11rem;
                 margin-bottom: 5.5rem;
             }
         }
+
         .custom-products-section {
             margin-top: 1rem;
         }
+
         .custom-carousel-item-content {
             display: flex;
             justify-content: center;
         }
+
         .custom-card {
             width: 15rem;
             margin: 0.3rem;
             border: none;
             background-color: #ffffff00;
         }
+
         .custom-levitation-effect {
             transform: translateY(0px);
             transition: transform 0.5s;
         }
+
         .custom-levitation-effect:hover {
             transform: translateY(-8px);
         }
+
         .custom-card-body {
             text-align: center;
         }
+
         .custom-card-body h5 {
             color: black;
         }
+
         .custom-card-body h6 {
             color: black;
         }
+
         .custom-products-section {
             position: relative;
         }
+
         .custom-carousel-inner {
             padding: 1em;
         }
+
         .custom-carousel-control-prev,
         .custom-carousel-control-next {
             top: 50%;
@@ -86,26 +103,31 @@
             background-color: black;
             transform: translateY(-50%);
         }
+
         .custom-carousel-control-prev:hover,
         .custom-carousel-control-next:hover {
             background-color: #0dcaf0;
         }
+
         @media (min-width: 576px) {
             .custom-carousel-item {
                 margin-right: 0;
                 flex: 0 0 50%;
                 display: block;
             }
+
             .custom-carousel-inner {
                 display: flex;
             }
         }
+
         @media (min-width: 1200px) {
             .custom-carousel-item {
                 margin-right: 0;
                 flex: 0 0 33.33%;
                 display: block;
             }
+
             .custom-carousel-inner {
                 display: flex;
             }
@@ -162,20 +184,17 @@
 
                             <!-- Product Modal -->
 
-                            <div class="portfolio-modal modal fade mt-5" id="productModal{{$product->id}}"
+                            <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
                                  tabindex="-1"
                                  aria-labelledby="portfolioModal1"
                                  aria-hidden="true">
 
                                 <div class="modal-dialog modal-lg">
-
+                                    <div class="modal-header" style="background: rgba(255,255,255,0.9)">
+                                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
                                     <div class="modal-content" style="background: rgba(255,255,255,0.9)">
-                                        <div class="modal-header justify-content-xl-end">
-
-                                            <button type="button" class="close" data-dismiss="productModal{{$product->id}}" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
                                         <div class="modal-body">
 
                                             <div class="container">
@@ -197,7 +216,8 @@
                                                             unitario:&nbsp;<strong>$&nbsp;{{number_format($product->price, 0, ',', '.')}}</strong>
                                                         </h5>
                                                         <h5 class="mt-4">Cantidad:
-                                                        <input type="number" value="0" min="0" max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>
+                                                            <input type="number" value="0" min="0"
+                                                                   max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>
                                                         </h5>
                                                     </div>
 
@@ -238,7 +258,11 @@
 
         </div>
 
+        <!-- Panel de pedido -->
+
         </div>
+
+
     </section>
 @endsection
 
@@ -299,10 +323,9 @@
             confirmButtonColor: '#da0e1e',
         })
         @endif
-        @if(session('message') == 'successfulDelivery')
+        @if(session('message') == 'successfulAddedOrder')
         Swal.fire({
-            title: 'Solicitud de domicilio realizada correctamente',
-            text: 'Cualquier inquietud no dudes en contactarnos.',
+            title: 'Producto agregado',
             icon: 'success',
             confirmButtonColor: '#199605',
         })
