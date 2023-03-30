@@ -6,7 +6,7 @@
 
         <div class="row custom-products-section">
 
-            <div id="carouselExampleControls" class="carousel" data-bs-ride="false">
+            <div id="carouselExampleControls1" class="carousel" data-bs-ride="false">
 
                 <div class="carousel-inner custom-carousel-inner">
 
@@ -45,21 +45,17 @@
 
                         <!-- Product Modal -->
 
-                        <div class="portfolio-modal modal fade mt-5" id="productModal{{$product->id}}"
+                        <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
                              tabindex="-1"
                              aria-labelledby="portfolioModal1"
                              aria-hidden="true">
 
                             <div class="modal-dialog modal-lg">
-
+                                <div class="modal-header" style="background: rgba(255,255,255,0.9)">
+                                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
                                 <div class="modal-content" style="background: rgba(255,255,255,0.9)">
-                                    <div class="modal-header justify-content-xl-end">
-
-                                        <button type="button" class="close" data-dismiss="portfolioModal1"
-                                                aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
                                     <div class="modal-body">
 
                                         <div class="container">
@@ -69,7 +65,7 @@
                                                 <div class="col-12 col-md-6 mt-3 mb-3 rounded-3"
                                                      style="background-color: white">
                                                     <img class="img-fluid mt-5 mb-5"
-                                                         src="{{asset('storage').'catalogue.blade.php/'.$product->image}}"
+                                                         src="{{ asset('storage/' . $product->image) }}"
                                                          alt="product"/>
                                                 </div>
 
@@ -104,14 +100,14 @@
                 </div>
 
                 <button class="carousel-control-prev custom-carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleControls"
+                        data-bs-target="#carouselExampleControls1"
                         data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
 
                 <button class="carousel-control-next custom-carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleControls"
+                        data-bs-target="#carouselExampleControls1"
                         data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -126,37 +122,37 @@
     </div>
 @endsection
 
-@section('makeOrderScript')
+@section('makeOrderScript0')
     <script>
-        let multipleCardCarousel = document.querySelector("#carouselExampleControls");
+        let multipleCardCarousel0 = document.querySelector("#carouselExampleControls1");
         if (window.screen.width >= 576 || window.screen.width >= 1200) {
-            new bootstrap.Carousel(multipleCardCarousel, {interval: false,});
+            new bootstrap.Carousel(multipleCardCarousel0, {interval: false,});
             let carouselWidth = $(".carousel-inner")[0].scrollWidth;
             let cardWidth = $(".carousel-item").width();
             let scrollPosition = 0;
-            $("#carouselExampleControls .carousel-control-next").on("click", function () {
+            $("#carouselExampleControls1 .carousel-control-next").on("click", function () {
                 if (window.screen.width >= 576 && window.screen.width < 1200) {
                     if (scrollPosition < carouselWidth - cardWidth * 3) {
                         scrollPosition += cardWidth;
-                        $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 750);
+                        $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 750);
                     }
                 }
                 if (window.screen.width >= 1200) {
-                    $(multipleCardCarousel).removeClass("slide")
+                    $(multipleCardCarousel0).removeClass("slide")
                     if (scrollPosition < carouselWidth - cardWidth * 4) {
                         scrollPosition += cardWidth;
-                        $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
+                        $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
                     }
                 }
             });
-            $("#carouselExampleControls .carousel-control-prev").on("click", function () {
+            $("#carouselExampleControls1 .carousel-control-prev").on("click", function () {
                 if (scrollPosition > 0) {
                     scrollPosition -= cardWidth;
-                    $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
+                    $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
                 }
             });
         } else if (window.screen.width < 576) {
-            $(multipleCardCarousel).addClass("slide");
+            $(multipleCardCarousel0).addClass("slide");
         }
         // Confirmation alert
         $('.confirmation_alert').submit(function (e) {

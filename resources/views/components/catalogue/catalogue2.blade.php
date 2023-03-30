@@ -45,21 +45,17 @@
 
                         <!-- Product Modal -->
 
-                        <div class="portfolio-modal modal fade mt-5" id="productModal{{$product->id}}"
+                        <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
                              tabindex="-1"
                              aria-labelledby="portfolioModal1"
                              aria-hidden="true">
 
                             <div class="modal-dialog modal-lg">
-
+                                <div class="modal-header" style="background: rgba(255,255,255,0.9)">
+                                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
                                 <div class="modal-content" style="background: rgba(255,255,255,0.9)">
-                                    <div class="modal-header justify-content-xl-end">
-
-                                        <button type="button" class="close" data-dismiss="portfolioModal1"
-                                                aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
                                     <div class="modal-body">
 
                                         <div class="container">
@@ -69,7 +65,7 @@
                                                 <div class="col-12 col-md-6 mt-3 mb-3 rounded-3"
                                                      style="background-color: white">
                                                     <img class="img-fluid mt-5 mb-5"
-                                                         src="{{asset('storage').'catalogue.blade.php/'.$product->image}}"
+                                                         src="{{ asset('storage/' . $product->image) }}"
                                                          alt="product"/>
                                                 </div>
 
@@ -128,9 +124,9 @@
 
 @section('makeOrderScript2')
     <script>
-        let multipleCardCarousel = document.querySelector("#carouselExampleControls");
+        let multipleCardCarousel2 = document.querySelector("#carouselExampleControls");
         if (window.screen.width >= 576 || window.screen.width >= 1200) {
-            new bootstrap.Carousel(multipleCardCarousel, {interval: false,});
+            new bootstrap.Carousel(multipleCardCarousel2, {interval: false,});
             let carouselWidth = $(".carousel-inner")[0].scrollWidth;
             let cardWidth = $(".carousel-item").width();
             let scrollPosition = 0;
@@ -142,7 +138,7 @@
                     }
                 }
                 if (window.screen.width >= 1200) {
-                    $(multipleCardCarousel).removeClass("slide")
+                    $(multipleCardCarousel2).removeClass("slide")
                     if (scrollPosition < carouselWidth - cardWidth * 4) {
                         scrollPosition += cardWidth;
                         $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
@@ -156,7 +152,7 @@
                 }
             });
         } else if (window.screen.width < 576) {
-            $(multipleCardCarousel).addClass("slide");
+            $(multipleCardCarousel2).addClass("slide");
         }
         // Confirmation alert
         $('.confirmation_alert').submit(function (e) {

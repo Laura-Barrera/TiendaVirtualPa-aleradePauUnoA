@@ -6,7 +6,7 @@
 
         <div class="row custom-products-section">
 
-            <div id="carouselExampleControls" class="carousel" data-bs-ride="false">
+            <div id="carouselExampleControls2" class="carousel" data-bs-ride="false">
 
                 <div class="carousel-inner custom-carousel-inner">
 
@@ -45,21 +45,17 @@
 
                         <!-- Product Modal -->
 
-                        <div class="portfolio-modal modal fade mt-5" id="productModal{{$product->id}}"
+                        <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
                              tabindex="-1"
                              aria-labelledby="portfolioModal1"
                              aria-hidden="true">
 
                             <div class="modal-dialog modal-lg">
-
+                                <div class="modal-header" style="background: rgba(255,255,255,0.9)">
+                                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
                                 <div class="modal-content" style="background: rgba(255,255,255,0.9)">
-                                    <div class="modal-header justify-content-xl-end">
-
-                                        <button type="button" class="close" data-dismiss="portfolioModal1"
-                                                aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
                                     <div class="modal-body">
 
                                         <div class="container">
@@ -85,10 +81,10 @@
                                                     </h5>
 
 
-                                                <div class="row d-flex justify-content-center mt-3 mt-md-0">
-                                                    <a href="{{url('/addProduct/' . $product->id)}}"
-                                                       class="btn custom-product-selection-button w-25">Agregar</a>
-                                                </div>
+                                                    <div class="row d-flex justify-content-center mt-3 mt-md-0">
+                                                        <a href="{{url('/addProduct/' . $product->id)}}"
+                                                           class="btn custom-product-selection-button w-25">Agregar</a>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -105,14 +101,14 @@
                 </div>
 
                 <button class="carousel-control-prev custom-carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleControls1"
+                        data-bs-target="#carouselExampleControls2"
                         data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
 
                 <button class="carousel-control-next custom-carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleControls1"
+                        data-bs-target="#carouselExampleControls2"
                         data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -129,35 +125,36 @@
 
 @section('makeOrderScript1')
     <script>
-        let multipleCardCarousel = document.querySelector("#carouselExampleControls1");
+        let multipleCardCarousel1 = document.querySelector("#carouselExampleControls2");
         if (window.screen.width >= 576 || window.screen.width >= 1200) {
-            new bootstrap.Carousel(multipleCardCarousel, {interval: false,});
-            let carouselWidth = $(".carousel-inner")[0].scrollWidth;
+            new bootstrap.Carousel(multipleCardCarousel1, {interval: false,});
+            let carouselWidth = $(".carousel-inner")[0].sscrollWidth;
             let cardWidth = $(".carousel-item").width();
             let scrollPosition = 0;
-            $("#carouselExampleControls1 .carousel-control-next").on("click", function () {
+            $("#carouselExampleControls2 .carousel-control-next").on("click", function () {
                 if (window.screen.width >= 576 && window.screen.width < 1200) {
+                    console.log('Holaaaa')
                     if (scrollPosition < carouselWidth - cardWidth * 3) {
                         scrollPosition += cardWidth;
-                        $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 750);
+                        $("#carouselExampleControls2 .carousel-inner").animate({scrollLeft: scrollPosition}, 750);
                     }
                 }
                 if (window.screen.width >= 1200) {
-                    $(multipleCardCarousel).removeClass("slide")
+                    $(multipleCardCarousel1).removeClass("slide")
                     if (scrollPosition < carouselWidth - cardWidth * 4) {
                         scrollPosition += cardWidth;
-                        $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
+                        $("#carouselExampleControls2 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
                     }
                 }
             });
-            $("#carouselExampleControls1 .carousel-control-prev").on("click", function () {
+            $("#carouselExampleControls2 .carousel-control-prev").on("click", function () {
                 if (scrollPosition > 0) {
                     scrollPosition -= cardWidth;
-                    $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
+                    $("#carouselExampleControls2 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
                 }
             });
         } else if (window.screen.width < 576) {
-            $(multipleCardCarousel).addClass("slide");
+            $(multipleCardCarousel1).addClass("slide");
         }
         // Confirmation alert
         $('.confirmation_alert').submit(function (e) {
