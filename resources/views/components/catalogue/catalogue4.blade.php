@@ -128,9 +128,9 @@
 
 @section('makeOrderScript4')
     <script>
-        let multipleCardCarousel = document.querySelector("#carouselExampleControls");
+        let multipleCardCarousel4 = document.querySelector("#carouselExampleControls");
         if (window.screen.width >= 576 || window.screen.width >= 1200) {
-            new bootstrap.Carousel(multipleCardCarousel, {interval: false,});
+            new bootstrap.Carousel(multipleCardCarousel4, {interval: false,});
             let carouselWidth = $(".carousel-inner")[0].scrollWidth;
             let cardWidth = $(".carousel-item").width();
             let scrollPosition = 0;
@@ -142,7 +142,7 @@
                     }
                 }
                 if (window.screen.width >= 1200) {
-                    $(multipleCardCarousel).removeClass("slide")
+                    $(multipleCardCarousel4).removeClass("slide")
                     if (scrollPosition < carouselWidth - cardWidth * 4) {
                         scrollPosition += cardWidth;
                         $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
@@ -156,7 +156,7 @@
                 }
             });
         } else if (window.screen.width < 576) {
-            $(multipleCardCarousel).addClass("slide");
+            $(multipleCardCarousel4).addClass("slide");
         }
         // Confirmation alert
         $('.confirmation_alert').submit(function (e) {

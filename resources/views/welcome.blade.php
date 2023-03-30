@@ -81,6 +81,7 @@
     @yield('loginScript')
     @yield('registerScript')
     @yield('makeOrderScript')
+    @yield('makeOrderScript0')
 
 </body>
 
