@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [welcomeController::class, 'getStart']);
 Route::get('/nosotros', [welcomeController::class, 'getStartAbout']);
 Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
+Route::get('/order', [welcomeController::class, 'getOrderDetail']);
+Route::get('/order/{category}', [OrderController::class, 'getOrderDetail'])->name('order');
+
 
 Auth::routes();
 
@@ -65,4 +68,5 @@ Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeContro
 Route::get('/makeOrder/{category}', [OrderController::class, 'getMakeOrder'])->name('makeOrder');
 Route::get('/addProduct/{product}', [OrderController::class, 'addProduct']);
 Route::delete('/removeProduct', [OrderController::class, 'removeProduct']);
+
 

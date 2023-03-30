@@ -49,6 +49,7 @@
     @yield('start')
     {{--@yield('menu')
     @yield('makeOrder')--}}
+    <a href="/order" class="btn-flotante"><i class="bi bi-cart4 fa-2x"></i></a>
 
     <!-- FOOTER -->
     @include('components.welcome.footer')

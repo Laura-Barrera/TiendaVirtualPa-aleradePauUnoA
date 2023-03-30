@@ -71,7 +71,7 @@ class OrderController extends Controller
         array_push($listOfProducts, $product);
         $this->saveProducts($listOfProducts);
 
-        return redirect()->route('makeOrder', $category);
+        return redirect()->route('makeOrder', $category)->with('message', 'successfulAddedOrder');;
     }
 
     private function getListProducts()
