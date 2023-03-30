@@ -62,5 +62,7 @@ Route::delete('/product/destroy/{product}', [ProductController::class, 'destroy'
 Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeController::class, 'show'])->name('employee/data');
 
 /*Rutas para los pedidos*/
+Route::get('/makeOrder/{category}', [OrderController::class, 'getMakeOrder'])->name('makeOrder');
 Route::get('/addProduct/{product}', [OrderController::class, 'addProduct']);
+Route::delete('/removeProduct', [OrderController::class, 'removeProduct']);
 
