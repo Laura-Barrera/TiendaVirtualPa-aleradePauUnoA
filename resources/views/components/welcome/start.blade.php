@@ -184,20 +184,30 @@
 
                             <!-- Product Modal -->
 
+<<<<<<< HEAD
                             <div class="modal portfolio-modal  fade mt-5" id="productModal{{$product->id}}"
+=======
+                            <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
+>>>>>>> df7e90bee24b16d2f5a07432d61858c48832a12a
                                  tabindex="-1"
                                  aria-labelledby="portfolioModal1"
                                  aria-hidden="true">
 
                                 <div class="modal-dialog modal-lg">
-
+                                    <div class="modal-header" style="background: rgba(255,255,255,0.9)">
+                                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
                                     <div class="modal-content" style="background: rgba(255,255,255,0.9)">
+<<<<<<< HEAD
                                         <div class="modal-header" style="height: 50px;">
                                             <h5 class="modal-title" id="exampleModalLabel">Detalle producto</h5>
                                             <button type="button" class="btn-close btn-close-black"
                                                     data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
+=======
+>>>>>>> df7e90bee24b16d2f5a07432d61858c48832a12a
                                         <div class="modal-body">
 
                                             <div class="container">

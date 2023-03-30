@@ -24,7 +24,7 @@ class SalesManagementController extends Controller
     public function index(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', true);
+        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', false);
         return view('components.saleManagement.index', $data);
     }
     public function details(Sale $sale): Factory|View|Application
@@ -39,19 +39,21 @@ class SalesManagementController extends Controller
         return redirect('shippingOrder/management')->with('message', 'successfulSaleUpdate');
     }
 
-    public function destroy(Sale $sale): Redirector|Application|RedirectResponse
+    public function destroy(Sale $shipping): Redirector|Application|RedirectResponse
     {
-        $orders = Sale::all()->where('sale_id', '=', $sale->getAttribute('id'));
-        foreach ($orders as $order)
-            $order->delete();
-        $sale->delete();
-        return redirect('employee/management')->with('message', 'successfulSaleDelete');
+        $allShippings = ShippingOrder::all()->where('id', '=', $shipping->getAttribute('id'));
+        foreach ($allShippings as $shop)
+            if ($shop->getAttribute('id') != 1){
+                $shop->delete();
+            }
+        $shipping->delete();
+        return redirect('shippingOrder/management')->with('message', 'successfulSaleDelete');
     }
 
     public function indexRealizedSales(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = Sale::all();
+        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', true);
         return view('components.realizedSalesManagement.index', $data);
     }
 

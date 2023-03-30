@@ -81,7 +81,7 @@
         Swal.fire({
             title: 'Producto agregado correctamente',
             icon: 'success',
-            confirmButtonColor: '#199605',
+            confirmButtonColor: '#a1bcff',
         })
         @endif
 
@@ -89,7 +89,7 @@
         Swal.fire({
             title: 'Producto actualizado correctamente',
             icon: 'success',
-            confirmButtonColor: '#199605',
+            confirmButtonColor: '#a1bcff',
         })
         @endif
 
@@ -97,7 +97,7 @@
         Swal.fire({
             title: 'Producto eliminado correctamente',
             icon: 'success',
-            confirmButtonColor: '#199605',
+            confirmButtonColor: '#a1bcff',
         })
         @endif
 

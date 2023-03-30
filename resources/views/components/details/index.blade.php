@@ -33,8 +33,8 @@
                     <tr>
                         <td>{{$detail->sale_id}}</td>
                         <td>{{$detail->id}}</td>
-                        <td>{{$detail->product->name}}</td>
-                        <td>{{$detail->product->price}}</td>
+                        <td>{{\App\Models\Product::all()->find($detail->product_id->name)}}</td>
+                        <td>{{\App\Models\Product::all()->find($detail->product_id->price)}}</td>
                         <td>{{$detail->amount}}</td>
                     </tr>
                 @endforeach
