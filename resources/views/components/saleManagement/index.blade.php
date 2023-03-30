@@ -89,7 +89,7 @@
                 confirmButtonColor: '#a1bcff',
                 confirmButtonText: 'Si, cancelar pedido',
                 cancelButtonText: 'Cancelar',
-                cancelButtonColor: '#d78aea',
+                cancelButtonColor: '#d78aea ',
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.submit();

@@ -3,6 +3,7 @@
 use App\Http\Controllers\WebController\ControlSalesController;
 use App\Http\Controllers\WebController\EmployeeManagementController;
 use App\Http\Controllers\WebController\HomeController;
+use App\Http\Controllers\WebController\OrderController;
 use App\Http\Controllers\WebController\ProductController;
 use App\Http\Controllers\WebController\SalesManagementController;
 use App\Http\Controllers\WebController\WelcomeController;
@@ -59,4 +60,7 @@ Route::delete('/product/destroy/{product}', [ProductController::class, 'destroy'
 
 /* Rutas empleado módulo */
 Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeController::class, 'show'])->name('employee/data');
+
+/*Rutas para los pedidos*/
+Route::get('/addProduct/{product}', [OrderController::class, 'addProduct']);
 
