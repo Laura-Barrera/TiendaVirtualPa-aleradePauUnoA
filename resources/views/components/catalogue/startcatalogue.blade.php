@@ -90,13 +90,8 @@
 
 
 @yield('loginScript')
-@yield('makeOrderScript')
+@yield('makeOrderScript0')
 @yield('makeOrderScript1')
-@yield('makeOrderScript2')
-@yield('makeOrderScript3')
-@yield('makeOrderScript4')
-@yield('makeOrderScript5')
-@yield('makeOrderScript6')
 </body>
 
 </html>

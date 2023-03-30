@@ -6,7 +6,7 @@
 
         <div class="row custom-products-section">
 
-            <div id="carouselExampleControls" class="carousel" data-bs-ride="false">
+            <div id="carouselExampleControls1" class="carousel" data-bs-ride="false">
 
                 <div class="carousel-inner custom-carousel-inner">
 
@@ -100,14 +100,14 @@
                 </div>
 
                 <button class="carousel-control-prev custom-carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleControls"
+                        data-bs-target="#carouselExampleControls1"
                         data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
 
                 <button class="carousel-control-next custom-carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleControls"
+                        data-bs-target="#carouselExampleControls1"
                         data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -124,31 +124,31 @@
 
 @section('makeOrderScript0')
     <script>
-        let multipleCardCarousel0 = document.querySelector("#carouselExampleControls");
+        let multipleCardCarousel0 = document.querySelector("#carouselExampleControls1");
         if (window.screen.width >= 576 || window.screen.width >= 1200) {
             new bootstrap.Carousel(multipleCardCarousel0, {interval: false,});
             let carouselWidth = $(".carousel-inner")[0].scrollWidth;
             let cardWidth = $(".carousel-item").width();
             let scrollPosition = 0;
-            $("#carouselExampleControls .carousel-control-next").on("click", function () {
+            $("#carouselExampleControls1 .carousel-control-next").on("click", function () {
                 if (window.screen.width >= 576 && window.screen.width < 1200) {
                     if (scrollPosition < carouselWidth - cardWidth * 3) {
                         scrollPosition += cardWidth;
-                        $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 750);
+                        $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 750);
                     }
                 }
                 if (window.screen.width >= 1200) {
                     $(multipleCardCarousel0).removeClass("slide")
                     if (scrollPosition < carouselWidth - cardWidth * 4) {
                         scrollPosition += cardWidth;
-                        $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
+                        $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
                     }
                 }
             });
-            $("#carouselExampleControls .carousel-control-prev").on("click", function () {
+            $("#carouselExampleControls1 .carousel-control-prev").on("click", function () {
                 if (scrollPosition > 0) {
                     scrollPosition -= cardWidth;
-                    $("#carouselExampleControls .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
+                    $("#carouselExampleControls1 .carousel-inner").animate({scrollLeft: scrollPosition}, 600);
                 }
             });
         } else if (window.screen.width < 576) {
