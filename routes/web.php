@@ -69,4 +69,9 @@ Route::get('/makeOrder/{category}', [OrderController::class, 'getMakeOrder'])->n
 Route::get('/addProduct/{product}', [OrderController::class, 'addProduct']);
 Route::delete('/removeProduct', [OrderController::class, 'removeProduct']);
 
+/*Rutas proceso de envio*/
+Route::get('/saleInformation1', [\App\Http\Controllers\WebController\ShippingController::class, 'getInformationCustomer'])->name('informationCustomer');
+Route::get('/saleAddress', [\App\Http\Controllers\WebController\ShippingController::class, 'getInformationAddress'])->name('informationAddress');
+Route::get('/salePayment', [\App\Http\Controllers\WebController\ShippingController::class, 'getPaymentMethod'])->name('paymentMethod');
+
 

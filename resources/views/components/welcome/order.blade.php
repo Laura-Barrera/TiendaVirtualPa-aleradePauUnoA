@@ -84,7 +84,7 @@
                             </li>
                         </ul>
                     </div><br>
-                    <input type='submit' value="Pagar Ahora" class="btn btn-danger" id="button">
+                    <a href="{{ route('informationCustomer') }}" class="btn btn-danger" id="button">Pagar Ahora</a>
                 @endif
 
             </div>
