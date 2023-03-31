@@ -41,7 +41,6 @@
 
     <!-- NAVBAR -->
     @include('components.welcome.navbar')
-    @include('components.welcome.masthead')
     @include('components.welcome.login')
 
 
