@@ -47,6 +47,8 @@
 
     <!-- CONTENT -->
     @yield('start')
+    @yield('order')
+    @yield('about')
     {{--@yield('menu')
     @yield('makeOrder')--}}
     <a href="/order" class="btn-flotante"><i class="bi bi-cart4 fa-2x"></i></a>

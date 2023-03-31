@@ -27,7 +27,6 @@ Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
 Route::get('/order', [welcomeController::class, 'getOrderDetail']);
 Route::get('/order/{category}', [OrderController::class, 'getOrderDetail'])->name('order');
 
-
 Auth::routes();
 
 /* Ruta de inicio modulos internos */
@@ -68,5 +67,10 @@ Route::get('/employee/data', [\App\Http\Controllers\WebController\EmployeeContro
 Route::get('/makeOrder/{category}', [OrderController::class, 'getMakeOrder'])->name('makeOrder');
 Route::get('/addProduct/{product}', [OrderController::class, 'addProduct']);
 Route::delete('/removeProduct', [OrderController::class, 'removeProduct']);
+
+/*Rutas proceso de envio*/
+Route::get('/saleInformation1', [\App\Http\Controllers\WebController\ShippingController::class, 'getInformationCustomer'])->name('informationCustomer');
+Route::get('/saleAddress', [\App\Http\Controllers\WebController\ShippingController::class, 'getInformationAddress'])->name('informationAddress');
+Route::get('/salePayment', [\App\Http\Controllers\WebController\ShippingController::class, 'getPaymentMethod'])->name('paymentMethod');
 
 

@@ -14,7 +14,7 @@ class WelcomeController extends Controller
     }
 
     function getStartAbout(){
-        return view('components.about.startabout');
+        return view('components.welcome.about');
     }
 
     function getStartCatalogue(){
@@ -23,6 +23,6 @@ class WelcomeController extends Controller
     }
 
     function getOrderDetail(){
-        return view('components.order.orderDetail');
+        return view('components.welcome.order');
     }
 }
