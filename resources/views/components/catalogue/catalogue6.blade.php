@@ -51,15 +51,14 @@
                              aria-hidden="true">
 
                             <div class="modal-dialog modal-lg">
+                                <div class="modal-header justify-content-xl-end">
 
+                                    <button type="button" class="close" data-dismiss="portfolioModal1"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <div class="modal-content" style="background: rgba(255,255,255,0.9)">
-                                    <div class="modal-header justify-content-xl-end">
-
-                                        <button type="button" class="close" data-dismiss="portfolioModal1"
-                                                aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
                                     <div class="modal-body">
 
                                         <div class="container">
@@ -80,19 +79,13 @@
                                                     <h5 class="mt-4">Precio
                                                         unitario:&nbsp;<strong>$&nbsp;{{number_format($product->stockAmount, 0, ',', '.')}}</strong>
                                                     </h5>
-                                                    <h5 class="mt-4">Cantidad:
-                                                        <input type="number" value="0" min="0"
-                                                               max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>
-                                                    </h5>
+                                                    <div class="row d-flex justify-content-center mt-3 mt-md-0">
+                                                        <a href="{{url('/addProduct/' . $product->id)}}"
+                                                           class="btn custom-product-selection-button w-25">Agregar</a>
+                                                    </div>
                                                 </div>
 
                                             </div>
-
-                                            <div class="row d-flex justify-content-center mt-3 mt-md-0">
-                                                <a href="{{url('/addProduct/' . $product->id)}}"
-                                                   class="btn custom-product-selection-button w-25">Agregar</a>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
