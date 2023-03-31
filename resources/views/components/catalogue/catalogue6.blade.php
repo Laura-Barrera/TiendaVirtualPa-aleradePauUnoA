@@ -45,7 +45,7 @@
 
                         <!-- Product Modal -->
 
-                        <div class="portfolio-modal modal fade mt-5" id="productModal{{$product->id}}"
+                        <div class="modal portfolio-modal fade mt-5" id="productModal{{$product->id}}"
                              tabindex="-1"
                              aria-labelledby="portfolioModal1"
                              aria-hidden="true">

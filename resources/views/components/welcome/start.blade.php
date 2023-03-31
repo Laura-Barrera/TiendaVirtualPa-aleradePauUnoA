@@ -251,12 +251,6 @@
             </div>
 
         </div>
-
-        <!-- Panel de pedido -->
-
-        </div>
-
-
     </section>
 @endsection
 
