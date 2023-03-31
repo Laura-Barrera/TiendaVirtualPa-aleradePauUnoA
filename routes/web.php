@@ -27,7 +27,6 @@ Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
 Route::get('/order', [welcomeController::class, 'getOrderDetail']);
 Route::get('/order/{category}', [OrderController::class, 'getOrderDetail'])->name('order');
 
-
 Auth::routes();
 
 /* Ruta de inicio modulos internos */

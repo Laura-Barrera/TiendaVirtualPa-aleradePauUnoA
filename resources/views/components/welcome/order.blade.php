@@ -1,5 +1,5 @@
-@extends('layouts.auth')
-@section('content')
+@extends('welcome')
+@section('order')
     <br>
     <div class="container" >
         <div class="container" style="display: flex; justify-content: center">

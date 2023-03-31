@@ -1,5 +1,5 @@
-@extends('layouts.auth')
-@section('content')
+@extends('welcome')
+@section('about')
     <header class="masthead p-4">
         <div class="container">
             <div class="table-responsive">
