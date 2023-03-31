@@ -50,8 +50,7 @@
 {{--@yield('menu')
 @yield('makeOrder')--}}
 
-<!-- FOOTER -->
-@include('components.welcome.footer')
+
 
 <!-- Scripts -->
 <script src="{{asset('js/app.js')}}"></script>
@@ -74,5 +73,6 @@
 @yield('registerScript')
 
 </body>
-
+<!-- FOOTER -->
+@include('components.welcome.footer')
 </html>

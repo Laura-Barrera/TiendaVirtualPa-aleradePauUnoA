@@ -78,7 +78,7 @@
                                                     </h5>
                                                     <h5 class="mt-4">Cantidad:
                                                         <input type="number" value="0" min="0"
-                                                               max={{number_format($product->stockAmount, 0, ',', '.')}} step="1"/>
+                                                               max={{number_format($product->price, 0, ',', '.')}} step="1"/>
                                                     </h5>
                                                 </div>
 
