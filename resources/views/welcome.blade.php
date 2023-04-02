@@ -48,6 +48,8 @@
     @yield('start')
     @yield('order')
     @yield('about')
+    @yield('informationCust')
+    @yield('addressShipping')
     {{--@yield('menu')
     @yield('makeOrder')--}}
     <a href="/order" class="btn-flotante"><i class="bi bi-cart4 fa-2x"></i></a>
@@ -79,11 +81,8 @@
 <!-- Script sections -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
     @yield('loginScript')
-    @yield('registerScript')
     @yield('makeOrderScript')
-    @yield('makeOrderScript0')
 
 </body>
 
