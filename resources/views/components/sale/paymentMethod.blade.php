@@ -127,3 +127,42 @@
     </div>
     <br>
 @endsection
+
+@section('alertsScript')
+    <script>
+        // Confirmation alert
+        $('.confirmation_alert').submit(function (e) {
+            e.preventDefault()
+            Swal.fire({
+                title: '¿Desea finalizar la orden?',
+                text: "¡No podrás revertir esto!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#a1bcff',
+                confirmButtonText: 'Si, finalizar',
+                cancelButtonText: 'Cancelar',
+                cancelButtonColor: '#d78aea',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        })
+        @if(session('errorMessage') == 'stockError')
+        Swal.fire({
+            title: 'No hay más unidades de este producto',
+            icon: 'error',
+            confirmButtonColor: '#a1bcff',
+        })
+        @endif
+        @if(session('message') == 'successfulDelivery')
+        Swal.fire({
+            title: 'Solicitud de domicilio realizada correctamente',
+            text: 'Cualquier inquietud no dudes en contactarnos.',
+            icon: 'success',
+            confirmButtonColor: '#5febc5',
+        })
+        @endif
+    </script>
+
+@endsection

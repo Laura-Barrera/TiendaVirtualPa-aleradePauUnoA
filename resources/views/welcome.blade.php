@@ -32,6 +32,7 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/globalStyles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/slideStyles.css') }}" rel="stylesheet">
 
     @yield('productStyles')
 
@@ -47,6 +48,7 @@
     <!-- CONTENT -->
     @yield('start')
     @yield('order')
+    @yield('catalogue')
     @yield('about')
     @yield('informationCust')
     @yield('addressShipping')
@@ -82,6 +84,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     @yield('loginScript')
+    @yield('alertsScript')
     @yield('makeOrderScript')
 
 </body>

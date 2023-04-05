@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\WebController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class WelcomeController extends Controller
 
     function getStartCatalogue(){
         $products =  Product::all();
-        return view('components.catalogue.startcatalogue', ['products' => $products]);
+        $categories = Category::all();
+        return view('components.catalogue.catalogue', ['products' => $products], ['categories' => $categories]);
     }
 
     function getOrderDetail(){
