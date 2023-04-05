@@ -49,6 +49,7 @@
     @yield('start')
     @yield('order')
     @yield('catalogue')
+    @yield('prueba')
     @yield('about')
     @yield('informationCust')
     @yield('addressShipping')

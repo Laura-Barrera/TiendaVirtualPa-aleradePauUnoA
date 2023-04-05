@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [welcomeController::class, 'getStart']);
 Route::get('/nosotros', [welcomeController::class, 'getStartAbout']);
 Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
+Route::get('/category/{category}', [welcomeController::class, 'showProductsByCategory'])->name('category.products');
 Route::get('/order', [welcomeController::class, 'getOrderDetail']);
 Route::get('/order/{category}', [OrderController::class, 'getOrderDetail'])->name('order');
 

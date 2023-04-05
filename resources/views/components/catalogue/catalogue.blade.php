@@ -4,7 +4,7 @@
         <div class="table-responsive">
             <div class="card-body" style="background-color: white">
                 @foreach($categories as $category)
-                    <h2 style="text-align: center">{{ $category->name }}</h2>
+                    <h2 style="text-align: center;color:#d78aea"><b>{{ $category->name }}</b></h2>
                     <table>
                         <tr>
                             @foreach($products->where('category_id', $category->id)->take(3) as $product)
@@ -68,9 +68,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +76,8 @@
                             @endforeach
                             <td>
                                 <div class="card custom-card" style="width: 6rem; margin: 0.7rem;">
-                                    <a href="" class="btn btn-primary" id="button3">Ver más...</a></div>
+                                    <a href="{{ route('category.products', ['category' => $category->id]) }}" class="btn btn-primary" id="button3">Ver más...</a>
+                                </div>
                             </td>
                         </tr>
                     </table>

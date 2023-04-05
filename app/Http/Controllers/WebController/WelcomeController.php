@@ -27,4 +27,15 @@ class WelcomeController extends Controller
     function getOrderDetail(){
         return view('components.welcome.order');
     }
+
+    function showProductsByCategory($category_id)
+    {
+        $category = Category::findOrFail($category_id);
+        $products = Product::where('category_id', $category_id)->get();
+        $categories = Category::all();
+
+        return view('components.catalogue.showProductsCategory', compact('category', 'products',
+            'categories'));
+    }
+
 }
