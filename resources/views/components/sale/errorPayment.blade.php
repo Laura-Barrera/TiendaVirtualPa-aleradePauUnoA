@@ -5,10 +5,10 @@
 
                 <div class="row align-items-start">
                     <div class="col">
-                        <img class="rounded-circle" src="{{asset('img/payment/error.png')}}" style="width: 400px"  alt=""/>
+                        <img class="rounded-circle" src="{{asset('img/payment/error.png')}}" style="width: 200px"  alt=""/>
 
                     </div>
-                    <div class="col">
+                    <div class="col col align-self-center">
                         <p class="text-muted" style="font-size: 25px">Error al realizar el pago</p>
                     </div>
                 </div>
