@@ -51,6 +51,7 @@
     @yield('catalogue')
     @yield('prueba')
     @yield('about')
+    @yield('paymentStatus')
     @yield('informationCust')
     @yield('addressShipping')
     {{--@yield('menu')

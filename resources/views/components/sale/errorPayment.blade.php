@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('about')
+@section('paymentStatus')
     <header class="masthead p-4">
         <div class="container">
 
