@@ -18,4 +18,16 @@ class ShippingController extends Controller
     function getPaymentMethod(){
         return view('components.sale.paymentMethod');
     }
+
+    function getErrorPayment(){
+        return view('components.sale.errorPayment');
+    }
+
+    function getPendingPayment(){
+        return view('components.sale.pendingPayment');
+    }
+
+    function getSuccessfulPayment(){
+        return view('components.sale.successfulPayment');
+    }
 }
