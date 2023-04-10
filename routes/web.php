@@ -74,4 +74,9 @@ Route::get('/saleInformation1', [\App\Http\Controllers\WebController\ShippingCon
 Route::get('/saleAddress', [\App\Http\Controllers\WebController\ShippingController::class, 'getInformationAddress'])->name('informationAddress');
 Route::get('/salePayment', [\App\Http\Controllers\WebController\ShippingController::class, 'getPaymentMethod'])->name('paymentMethod');
 
+/*Rutas pago*/
+Route::get('/errorPayment', [\App\Http\Controllers\WebController\ShippingController::class, 'getErrorPayment'])->name('errorPayment');
+Route::get('/successfulPayment', [\App\Http\Controllers\WebController\ShippingController::class, 'getSuccessfulPayment'])->name('pendingPayment');
+Route::get('/pendingPayment', [\App\Http\Controllers\WebController\ShippingController::class, 'getPendingPayment'])->name('successfulPayment');
+
 
