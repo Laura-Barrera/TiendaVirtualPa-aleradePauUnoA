@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card" style="background-color: #aef0ff">
                     <div class="card-header d-flex align-items-center justify-content-center">
-                        <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de envio</span>
+                        <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de envi   o</span>
                     </div>
                     <form style="background-color: white">
                         <div class="form-group" style="margin-left: 10px; margin-right: 10px">
