@@ -1,14 +1,13 @@
 @extends('welcome')
 @section('informationCust')
     <br>
-    <div class="container">
         <div class="container" style="display: flex; justify-content: left">
-            <div class="col-6">
+            <div class="col-6" >
                 <div class="card" style="background-color: #aef0ff">
                     <div class="card-header d-flex align-items-center justify-content-center">
                         <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de contacto</span>
                     </div>
-                    <form style="background-color: white">
+                    <form style="background-color: white" >
                         <div class="form-group" style="margin-left: 10px; margin-right: 10px">
                             <label class="text-black" for="name">Nombre</label>
                             <input type="text" class="form-control" name="name"
@@ -61,8 +60,8 @@
                         </div><br>
 
                         <div class="col-12" style="text-align: center">
-                            <a href="/order" class="btn btn-danger" id="button2">Atrás</a>
-                            <a href="/saleAddress" class="btn btn-danger" id="button">Siguiente</a>
+                            <a class="btn btn-primary" href="/order" id="button2">Atrás</a>
+                            <a class="btn btn-primary" href="/saleAddress" id="button">Siguiente</a>
                         </div><br>
                     </form>
                 </div>
@@ -155,6 +154,6 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <br>
 @endsection

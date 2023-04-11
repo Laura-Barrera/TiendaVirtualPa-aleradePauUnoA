@@ -49,7 +49,7 @@
     @yield('start')
     @yield('order')
     @yield('catalogue')
-    @yield('prueba')
+    @yield('showProduct')
     @yield('about')
     @yield('paymentStatus')
     @yield('informationCust')
