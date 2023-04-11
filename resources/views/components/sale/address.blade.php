@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card" style="background-color: #aef0ff">
                     <div class="card-header d-flex align-items-center justify-content-center">
-                        <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de envi   o</span>
+                        <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de envio</span>
                     </div>
                     <form style="background-color: white">
                         <div class="form-group" style="margin-left: 10px; margin-right: 10px">
@@ -15,17 +15,18 @@
                                    value="{{isset($shipingOrder->address)?$shipingOrder->address:old('addressShiping')}}" required>
                         </div>
 
-                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
-                            <label for="city">Ciudad</label>
-                            <input type=text" class="form-control" name="city"
-                                   value="{{isset($shipingOrder->city)?$shipingOrder->city:old('city')}}" required>
-                        </div>
-
                         <div class="form-group" style="margin-left: 10px; margin-right: 10px">
                             <label class="text-black" for="department">Departamento</label>
-                            <input type="text" class="form-control" name="department"
-                                   onkeydown="return /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/i.test(event.key)"
-                                   value="{{isset($shipingOrder->department)?$shipingOrder->department:old('deparment')}}" required>
+                            <select class="form-select form-select-lg" name="department" id="department" style="width: 100%"
+                                    value="{{isset($shipingOrder->department)?$shipingOrder->department:old('department')}}" required>
+                            </select>
+                        </div>
+
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="city">Ciudad</label><br>
+                            <select class="form-select form-select-lg" name="city" id="city" style="width: 100%"
+                                    value="{{isset($shipingOrder->city)?$shipingOrder->city:old('city')}}" required>
+                            </select>
                         </div><br>
 
                         <div class="col-12" style="text-align: center">
@@ -125,4 +126,44 @@
         </div>
     </div>
     <br>
+
+    <script>
+        // Leer el enlace JSON
+        fetch('https://www.datos.gov.co/resource/xdk5-pm3f.json')
+            .then(response => response.json())
+            .then(data => {
+                // Obtener los departamentos únicos y ordenarlos alfabéticamente
+                const departamentos = [...new Set(data.map(d => d.departamento))].sort();
+                const departamentoSelect = document.querySelector('#department');
+                // Agregar las opciones al select de departamentos
+                departamentos.forEach(d => {
+                    const option = document.createElement('option');
+                    option.value = d;
+                    option.textContent = d;
+                    departamentoSelect.appendChild(option);
+                });
+                // Mostrar los municipios del primer departamento en el select de municipios y ordenarlos alfabéticamente
+                const municipios = data.filter(d => d.departamento === departamentos[0]).map(d => d.municipio).sort();
+                const municipioSelect = document.querySelector('#city');
+                municipios.forEach(m => {
+                    const option = document.createElement('option');
+                    option.value = m;
+                    option.textContent = m;
+                    municipioSelect.appendChild(option);
+                });
+                // Actualizar los municipios cuando se cambia el departamento y ordenarlos alfabéticamente
+                departamentoSelect.addEventListener('change', e => {
+                    municipioSelect.innerHTML = ''; // Limpiar el select de municipios
+                    const selectedDepartamento = e.target.value;
+                    const municipios = data.filter(d => d.departamento === selectedDepartamento).map(d => d.municipio).sort();
+                    municipios.forEach(m => {
+                        const option = document.createElement('option');
+                        option.value = m;
+                        option.textContent = m;
+                        municipioSelect.appendChild(option);
+                    });
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
 @endsection
