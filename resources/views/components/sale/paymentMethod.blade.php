@@ -9,9 +9,9 @@
         $preference = new MercadoPago\Preference();
 
         $preference->back_urls = array(
-            "success" => "http://127.0.0.1:8000/",
-            "failure" => "http://127.0.0.1:8000/",
-            "pending" => "http://127.0.0.1:8000/"
+            "success" => "http://127.0.0.1:8000/successfulPayment",
+            "failure" => "http://127.0.0.1:8000/errorPayment",
+            "pending" => "http://127.0.0.1:8000/pendingPayment"
         );
         $preference->auto_return = "approved";
 
@@ -23,7 +23,6 @@
             $item->unit_price = $selectedProduct->price;
             $prods[]=$item;
         }
-
         $preference->items = $prods;
         $preference->save();
         // Crea un ítem en la preferencia
@@ -197,14 +196,7 @@
             confirmButtonColor: '#a1bcff',
         })
         @endif
-        @if(session('message') == 'successfulDelivery')
-        Swal.fire({
-            title: 'Solicitud de domicilio realizada correctamente',
-            text: 'Cualquier inquietud no dudes en contactarnos.',
-            icon: 'success',
-            confirmButtonColor: '#5febc5',
-        })
-        @endif
+
     </script>
 
 @endsection

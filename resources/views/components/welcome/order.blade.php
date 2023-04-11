@@ -95,3 +95,33 @@
 
     <br>
 @endsection
+@section('orderScripts')
+    <script>
+        @if(session('message') == 'successfulDelivery')
+        Swal.fire({
+            title: 'Solicitud de domicilio realizada correctamente',
+            text: 'Cualquier inquietud no dudes en contactarnos.',
+            icon: 'success',
+            confirmButtonColor: '#5febc5',
+        })
+        @endif
+
+        @if(session('message') == 'errorPayment')
+        Swal.fire({
+            title: 'Error!!',
+            text: 'No se pudo realizar la compra.',
+            icon: 'error',
+            confirmButtonColor: '#a1bcff',
+        })
+        @endif
+
+        @if(session('message') == 'pendingPayment')
+        Swal.fire({
+            title: 'Pendiente',
+            text: 'Su pago queda pendiente.',
+            icon: 'warning',
+            confirmButtonColor: '#da8f59',
+        })
+        @endif
+    </script>
+@endsection

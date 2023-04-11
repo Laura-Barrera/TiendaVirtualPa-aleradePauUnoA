@@ -49,7 +49,7 @@
     @yield('start')
     @yield('order')
     @yield('catalogue')
-    @yield('prueba')
+    @yield('showProduct')
     @yield('about')
     @yield('paymentStatus')
     @yield('informationCust')
@@ -88,6 +88,7 @@
     @yield('loginScript')
     @yield('alertsScript')
     @yield('makeOrderScript')
+    @yield('orderScripts')
 
 </body>
 

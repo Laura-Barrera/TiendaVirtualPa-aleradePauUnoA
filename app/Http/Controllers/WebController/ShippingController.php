@@ -20,14 +20,14 @@ class ShippingController extends Controller
     }
 
     function getErrorPayment(){
-        return view('components.sale.errorPayment');
+        return view('components.welcome.order')->with('message', 'errorPayment');
     }
 
     function getPendingPayment(){
-        return view('components.sale.pendingPayment');
+        return view('components.welcome.order')->with('message', 'pendingPayment');
     }
 
     function getSuccessfulPayment(){
-        return view('components.sale.successfulPayment');
+        return view('components.welcome.order')->with('message', 'successfulDelivery');
     }
 }

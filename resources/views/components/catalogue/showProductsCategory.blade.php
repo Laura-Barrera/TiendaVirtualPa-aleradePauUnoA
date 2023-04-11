@@ -1,6 +1,6 @@
 @extends('welcome')
 
-@section('prueba')
+@section('showProducts')
     <br><div class="row" style="overflow-x: auto;">
         <div class="btn-group">
             @foreach ($categories as $category1)
