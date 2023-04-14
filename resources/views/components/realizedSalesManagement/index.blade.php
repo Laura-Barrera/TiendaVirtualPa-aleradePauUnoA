@@ -10,10 +10,16 @@
             <p>
             <table>
                 <tr>
-                    <td width="100"><b>FECHA</b></td>
+                    <td width="100"><b>Fecha Inicio</b></td>
                     <td width="100">
                         <input class="form-control" type="date" max="<?php echo date("Y-m-d"); ?>"
                                value="" name="" id="datePicker" onchange="getDate();" required>
+                    </td>
+                    <td width="10"></td>
+                    <td width="100"><b>Fecha Fin</b></td>
+                    <td width="100">
+                        <input class="form-control" type="date" max="<?php echo date("Y-m-d"); ?>"
+                               value="" name="" id="datePicker1" onchange="getDate();" required>
                     </td>
                 </tr>
             </table>
@@ -39,6 +45,10 @@
                 </thead>
 
                 <tbody class="text-center" style="background-color: #F9F9F9" id="table">
+                @php
+                    $total = 0; // Declarar la variable $total e inicializarla en 0
+                @endphp
+
                 @foreach ($shipping_order as $shipping)
                     <tr>
                         <td>{{$shipping->id}}</td>
@@ -51,9 +61,17 @@
                         <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
                         <td>{{$shipping->totalCost}}</td>
                     </tr>
+                    @php
+                        $total += $shipping->totalCost; // Sumar el valor de $shipping->totalCost a $total
+                    @endphp
                 @endforeach
 
+                <tr>
+                    <td colspan="8" style="text-align:right; font-weight: bold;">TOTAL:</td>
+                    <td>{{$total}}</td> <!-- Mostrar el valor de $total -->
+                </tr>
                 </tbody>
+
 
             </table>
 
@@ -65,11 +83,12 @@
 @section('js2')
     <script>
         var getDate = function () {
-            var date = document.getElementById('datePicker').value || ""
+            var startDate = document.getElementById('datePicker').value || ""
+            var endDate = document.getElementById('datePicker1').value || ""
             var table = document.getElementById('table')
             msg = '';
             @foreach ($shipping_order as $shipping)
-            (date === '{{$shipping->saleDate}}') ? (msg += '<tr> <td>{{$shipping->id}}</td> <td>{{$shipping->saleDate}}</td> <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td> <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td> <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td> <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td> <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td> <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td> <td>{{$shipping->totalCost}}</td> </tr>' ): '';
+            (startDate <= '{{$shipping->saleDate}}' && endDate >= '{{$shipping->saleDate}}') ? (msg += '<tr> <td>{{$shipping->id}}</td> <td>{{$shipping->saleDate}}</td> <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td> <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td> <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td> <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td> <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td> <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td> <td>{{$shipping->totalCost}}</td> </tr>' ): '';
             @endforeach
                 table.innerHTML=msg;
         }
