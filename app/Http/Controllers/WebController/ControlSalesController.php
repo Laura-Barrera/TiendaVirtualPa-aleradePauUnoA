@@ -47,6 +47,7 @@ class ControlSalesController extends Controller
                 'id_payment_method'=>1,
                 'saleDate'=>date('Y-m-d'),
                 'totalCost'=>$totalCost,
+                'shipping_status' => true,
                 'saleStatus'=>true
             ]);
 

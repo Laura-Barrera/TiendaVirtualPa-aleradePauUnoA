@@ -34,7 +34,7 @@ class SalesManagementController extends Controller
     }
     public function changeStatus(Sale $shipping): Redirector|Application|RedirectResponse
     {
-        Sale::all()->find($shipping->getAttribute('id'))->setAttribute('shipping_status', 1);
+        Sale::all()->find($shipping->getAttribute('id'))->setAttribute('shipping_status', true);
         $shipping->save();
         return redirect('shippingOrder/management')->with('message', 'successfulSaleUpdate');
     }
