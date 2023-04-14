@@ -83,8 +83,13 @@
                                 @endforeach
                             </li>
                         </ul>
+                        <!--<div class="card-footer d-flex">
+                            <span class="text-black fs-4 fw-bolder">
+                                Total:&nbsp;${{number_format( session('total'), 0, ',', '.')}}
+                            </span>
+                        </div>-->
                     </div><br>
-                    <a href="{{ route('informationCustomer') }}" class="btn btn-danger" id="button">Pagar Ahora</a>
+                    <a href="{{ route('paymentMethod') }}" class="btn btn-danger" id="button">Pagar Ahora</a>
                 @endif
 
             </div>

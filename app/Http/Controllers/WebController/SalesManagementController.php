@@ -27,15 +27,15 @@ class SalesManagementController extends Controller
         $data['shipping_order'] = Sale::all()->where('saleStatus', '=', false);
         return view('components.saleManagement.index', $data);
     }
-    public function details(Sale $sale): Factory|View|Application
+    public function details(Sale $shipping)
     {
-        $data['details'] = OrderDetail::all()->where('sale_id', '=', $sale->getAttribute('id'));
+        $data['details'] = OrderDetail::all()->where('sale_id', '=', $shipping->getAttribute('id'));
         return view('components.details.index', $data);
     }
-    public function changeStatus(Sale $sale, SaleUpdateRequest $request): Redirector|Application|RedirectResponse
+    public function changeStatus(Sale $shipping): Redirector|Application|RedirectResponse
     {
-        $sale->update($request->all());
-        $sale->save();
+        Sale::all()->find($shipping->getAttribute('id'))->setAttribute('shipping_status', 1);
+        $shipping->save();
         return redirect('shippingOrder/management')->with('message', 'successfulSaleUpdate');
     }
 

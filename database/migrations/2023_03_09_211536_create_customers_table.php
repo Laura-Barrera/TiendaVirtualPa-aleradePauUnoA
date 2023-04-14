@@ -18,8 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('lastName');
             $table->string('documentType')->nullable(false);
-            $table->bigInteger('documentNumber')->nullable(false)->unique();
-            $table->bigInteger('phoneNumber')->nullable(false)->unique();
+            $table->bigInteger('documentNumber')->nullable(false);
+            $table->bigInteger('phoneNumber')->nullable(false);
             $table->string('address')->nullable(false);
             $table->string('email');
         });

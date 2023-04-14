@@ -42,7 +42,12 @@
                         <td>{{$shipping->saleStatus}}</td>
                         <td><p><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary" id="button">Visualizar Detalle</a></p></td>
                         <td>
-                            <p><a href="{{url('/shippingOrder/management/changeStatus/'.$shipping->id)}}" class="btn btn-primary" id="button2">Cambiar Estado</a></p>
+                            <form action="{{ url('/shippingOrder/management/changeStatus/'.$shipping->id) }}" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn btn-primary" id="button2">Cambiar Estado</button>
+                            </form>
+
 
                             <form action="{{url('/shippingOrder/management/destroy/'.$shipping->id)}}"
                                   class="d-inline confirmation_alert" method='post'>

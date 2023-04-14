@@ -2699,7 +2699,10 @@ textarea.form-control-lg {
 .form-floating > .form-control::placeholder {
     color: transparent;
 }
-
+.form-floating > .form-control:not(:-moz-placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+}
 .form-floating > .form-control:not(:-ms-input-placeholder) {
     padding-top: 1.625rem;
     padding-bottom: 0.625rem;
