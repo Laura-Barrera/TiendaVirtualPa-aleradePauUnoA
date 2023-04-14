@@ -94,22 +94,35 @@
 
                 </thead>
 
-                <tbody class="text-center" style="background-color: #F9F9F9">
+                <tbody class="text-center" style="background-color: #F9F9F9" id="table">
+                @php
+                    $total = 0; // Declarar la variable $total e inicializarla en 0
+                @endphp
 
                 @foreach ($shipping_order as $shipping)
-                    <tr>
-                        <td>{{$shipping->id}}</td>
-                        <td>{{$shipping->saleDate}}</td>
-                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td>
-                        <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td>
-                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td>
-                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
-                        <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
-                        <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
-                        <td>{{$shipping->totalCost}}</td>
-                    </tr>
+                    @if(\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod === 'Efectivo' || \App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod === 'pago-fisico')
+                        <tr>
+                            <td>{{$shipping->id}}</td>
+                            <td>{{$shipping->saleDate}}</td>
+                            <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->documentNumber}}</td>
+                            <td>{{\App\Models\Customer::all()->find($shipping->id_customer)->name}}</td>
+                            <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td>
+                            <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
+                            <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
+                            <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
+                            <td>{{$shipping->totalCost}}</td>
+                        </tr>
+                        @php
+                            $total += $shipping->totalCost; // Sumar el valor de $shipping->totalCost a $total
+                        @endphp
+                    @endif
                 @endforeach
 
+
+                <tr>
+                    <td colspan="8" style="text-align:right; font-weight: bold;">TOTAL:</td>
+                    <td>{{$total}}</td> <!-- Mostrar el valor de $total -->
+                </tr>
                 </tbody>
 
             </table>
