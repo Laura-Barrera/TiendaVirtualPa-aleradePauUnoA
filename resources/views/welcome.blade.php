@@ -51,9 +51,7 @@
     @yield('catalogue')
     @yield('showProduct')
     @yield('about')
-    @yield('paymentStatus')
     @yield('informationCust')
-    @yield('addressShipping')
     {{--@yield('menu')
     @yield('makeOrder')--}}
     <a href="/order" class="btn-flotante"><i class="bi bi-cart4 fa-2x"></i></a>
