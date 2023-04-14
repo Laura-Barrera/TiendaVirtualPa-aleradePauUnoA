@@ -5,11 +5,9 @@
         require base_path('vendor/autoload.php');
         // Agrega credenciales
         MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
-
         $preference = new MercadoPago\Preference();
-
         $preference->back_urls = array(
-            "success" => "http://127.0.0.1:8000/successfulPayment",
+            "success" => route('successfulPayment'),
             "failure" => "http://127.0.0.1:8000/errorPayment",
             "pending" => "http://127.0.0.1:8000/pendingPayment"
         );
@@ -34,35 +32,117 @@
             <div class="col-6">
                 <div class="card" style="background-color: #aef0ff">
                     <div class="card-header d-flex align-items-center justify-content-center">
-                        <span class="text-black fw-bolder " style="font-size: 25px" ;>Método de pago</span>
+                        <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de pago </span>
                     </div>
-                    <form style="background-color: white">
+                    <form action="{{url('/finalizeOrder')}}" method="post" enctype="multipart/form-data" style="background-color: white">
+                        @csrf
+
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                       <!-- Seccion informacion-->
+                        <div class="form-group" style="margin-left: 10px; margin-right: 10px">
+                            <label class="text-black" for="name">Nombre</label>
+                            <input type="text" class="form-control" name="name"
+                                   onkeydown="return /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/i.test(event.key)"
+                                   value="{{isset($name)?$name:old('name')}}" required>
+                        </div>
+
+                        <div class="form-group" style="margin-left: 10px; margin-right: 10px">
+                            <label class="text-black" for="lastName">Apellidos</label>
+                            <input type="text" class="form-control" name="lastName"
+                                   onkeydown="return /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/i.test(event.key)"
+                                   value="{{isset($lastName)?$lastName:old('lastName')}}" required>
+                        </div>
 
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
-                            <input type="radio" name="pagoCEnt" onclick="cleanMercadopago()" required>
+                            <label for="documentType">Tipo de documento</label>
+                            <select class="form-select form-control" id="documentType" name="documentType" required="required">
+                                <option value="Cedula de ciudadania"{{'documentType' == "Cedula de ciudadania"? 'selected': ''}}>Cédula de
+                                    ciudadania
+                                </option>
+                                <option value="Cedula de extranjeria"{{'documentType' == "Cedula de extranjeria"? 'selected': ''}}>Cédula de
+                                    extranjería
+                                </option>
+                                <option value="NIT"{{'documentType' == "NIT"? 'selected': ''}}>NIT</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="documentNumber">Nro. Documento</label>
+                            <input type="number" class="form-control" name="documentNumber"
+                                   value="{{isset($documentNumber)?$documentNumber:old('documentNumber')}}" required>
+                        </div>
+
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="phoneNumber">Nro. Celular</label>
+                            <input type="number" class="form-control" name="phoneNumber"
+                                   value="{{isset($phoneNumber)?$phoneNumber:old('phoneNumber')}}" required>
+                        </div>
+
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="address">Dirección</label>
+                            <input type="text" class="form-control" name="address"
+                                   value="{{isset($address)?$address:old('address')}}" required>
+                        </div>
+
+                        <div class="form-group mt-2" style="margin-left: 10px; margin-right: 10px">
+                            <label class="text-black" for="email">Correo electrónico</label>
+                            <input type="email" class="form-control" name="email"
+                                   value="{{isset($email)?$email:old('email')}}" required>
+                        </div><br>
+                        <!--fin seccion informacion -->
+
+                        <!--seccion direccion-->
+                        <div class="form-group" style="margin-left: 10px; margin-right: 10px">
+                            <label class="text-black" for="shippingAddress">Dirección envío</label>
+                            <input type="text" class="form-control" name="shippingAddress"
+                                   value="{{isset($shippingAddress)?$shippingAddress:old('shippingAddress')}}" required>
+                        </div>
+
+                        <div class="form-group" style="margin-left: 10px; margin-right: 10px">
+                            <label class="text-black" for="department">Departamento</label>
+                            <select class="form-select form-select-lg" name="department" id="department" style="width: 100%"
+                                    value="{{isset($department)?$department:old('department')}}" required>
+                            </select>
+                        </div>
+
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="city">Ciudad</label><br>
+                            <select class="form-select form-select-lg" name="city" id="city" style="width: 100%"
+                                    value="{{isset($city)?$city:old('city')}}" required>
+                            </select>
+                        </div><br>
+
+                        <!-- fin seccion direccion-->
+
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="pago-contra-entrega"></label><input type="radio" name="paymentMethod" id="pago-contra-entrega" onclick="cleanMercadopago()" value="pago-contra-entrega" required>
                             <label class="text-black" for="pagoCEnt">Pago Contra Entrega</label>
                         </div>
 
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
-                            <input type="radio" name="pagoCEnt" onclick="cleanMercadopago()">
+                            <label for="pago-fisico"></label><input type="radio" name="paymentMethod" id="pago-fisico" onclick="cleanMercadopago()" value="pago-fisico">
                             <label class="text-black" for="pagoPFisico">Pago en punto físico</label>
                         </div>
                         <br>
-
                         <div id="wallet_container" style="margin-left: 10px; margin-right: 10px"></div>
-                        <div class="col-12" style="text-align: center">
-                            <a href="{{ route('informationAddress') }}" class="btn btn-danger" id="button2">Atrás</a>
-                            <a href="/" class="btn btn-danger" id="button">Siguiente</a>
+                        <div class="mt-3 mb-3 d-flex align-items-end justify-content-center">
+                            <input type="submit" class="btn btn-warning" value="Confirmar pedido">
                         </div>
-                        <br>
+
                     </form>
-
-
                 </div>
             </div>
             <div class="col-6 ">
                 <div class="container" style="display: flex; justify-content: center">
-                    <div class="col-10">
+                    <div class="col-6" id="movimiento">
                         @if(session('listOfProducts') == null)
                             <img class="img-fluid" src="{{asset('img/orderBackground/bannerOrder.png')}}" width="300"
                                  alt="..."/>
@@ -197,6 +277,43 @@
         })
         @endif
 
+        // Leer el enlace JSON
+        fetch('https://www.datos.gov.co/resource/xdk5-pm3f.json')
+            .then(response => response.json())
+            .then(data => {
+                // Obtener los departamentos únicos y ordenarlos alfabéticamente
+                const departamentos = [...new Set(data.map(d => d.departamento))].sort();
+                const departamentoSelect = document.querySelector('#department');
+                // Agregar las opciones al select de departamentos
+                departamentos.forEach(d => {
+                    const option = document.createElement('option');
+                    option.value = d;
+                    option.textContent = d;
+                    departamentoSelect.appendChild(option);
+                });
+                // Mostrar los municipios del primer departamento en el select de municipios y ordenarlos alfabéticamente
+                const municipios = data.filter(d => d.departamento === departamentos[0]).map(d => d.municipio).sort();
+                const municipioSelect = document.querySelector('#city');
+                municipios.forEach(m => {
+                    const option = document.createElement('option');
+                    option.value = m;
+                    option.textContent = m;
+                    municipioSelect.appendChild(option);
+                });
+                // Actualizar los municipios cuando se cambia el departamento y ordenarlos alfabéticamente
+                departamentoSelect.addEventListener('change', e => {
+                    municipioSelect.innerHTML = ''; // Limpiar el select de municipios
+                    const selectedDepartamento = e.target.value;
+                    const municipios = data.filter(d => d.departamento === selectedDepartamento).map(d => d.municipio).sort();
+                    municipios.forEach(m => {
+                        const option = document.createElement('option');
+                        option.value = m;
+                        option.textContent = m;
+                        municipioSelect.appendChild(option);
+                    });
+                });
+            })
+            .catch(error => console.error(error));
     </script>
 
 @endsection

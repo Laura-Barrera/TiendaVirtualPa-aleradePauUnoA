@@ -11810,3 +11810,13 @@ section#contact form#contactForm :-ms-input-placeholder {
 #img-about, #logo{
     max-width: 100%;
 }
+
+#movimiento{
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+}

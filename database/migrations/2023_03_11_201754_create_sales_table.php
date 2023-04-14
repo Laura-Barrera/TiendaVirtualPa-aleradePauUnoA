@@ -35,6 +35,7 @@ class CreateSalesTable extends Migration
                 ->onDelete('cascade');
             $table->date('saleDate');
             $table->string('totalCost');
+            $table->boolean('shipping_status');
             $table->boolean('saleStatus');
         });
     }
