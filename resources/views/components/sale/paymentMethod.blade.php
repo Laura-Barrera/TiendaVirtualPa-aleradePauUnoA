@@ -34,7 +34,8 @@
                     <div class="card-header d-flex align-items-center justify-content-center">
                         <span class="text-black fw-bolder " style="font-size: 25px" ;>Información de pago </span>
                     </div>
-                    <form action="{{url('/finalizeOrder')}}" method="post" enctype="multipart/form-data" style="background-color: white">
+                    <form action="{{url('/finalizeOrder')}}" method="post" enctype="multipart/form-data"
+                          style="background-color: white">
                         @csrf
 
                         @if(count($errors)>0)
@@ -46,7 +47,7 @@
                                 </ul>
                             </div>
                         @endif
-                       <!-- Seccion informacion-->
+                        <!-- Seccion informacion-->
                         <div class="form-group" style="margin-left: 10px; margin-right: 10px">
                             <label class="text-black" for="name">Nombre</label>
                             <input type="text" class="form-control" name="name"
@@ -63,11 +64,16 @@
 
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
                             <label for="documentType">Tipo de documento</label>
-                            <select class="form-select form-control" id="documentType" name="documentType" required="required">
-                                <option value="Cedula de ciudadania"{{'documentType' == "Cedula de ciudadania"? 'selected': ''}}>Cédula de
+                            <select class="form-select form-control" id="documentType" name="documentType"
+                                    required="required">
+                                <option
+                                    value="Cedula de ciudadania"{{'documentType' == "Cedula de ciudadania"? 'selected': ''}}>
+                                    Cédula de
                                     ciudadania
                                 </option>
-                                <option value="Cedula de extranjeria"{{'documentType' == "Cedula de extranjeria"? 'selected': ''}}>Cédula de
+                                <option
+                                    value="Cedula de extranjeria"{{'documentType' == "Cedula de extranjeria"? 'selected': ''}}>
+                                    Cédula de
                                     extranjería
                                 </option>
                                 <option value="NIT"{{'documentType' == "NIT"? 'selected': ''}}>NIT</option>
@@ -94,9 +100,10 @@
 
                         <div class="form-group mt-2" style="margin-left: 10px; margin-right: 10px">
                             <label class="text-black" for="email">Correo electrónico</label>
-                            <input type="email" class="form-control" name="email"
+                            <input type="email" class="form-control" name="email" id="email"
                                    value="{{isset($email)?$email:old('email')}}" required>
-                        </div><br>
+                        </div>
+                        <br>
                         <!--fin seccion informacion -->
 
                         <!--seccion direccion-->
@@ -108,7 +115,8 @@
 
                         <div class="form-group" style="margin-left: 10px; margin-right: 10px">
                             <label class="text-black" for="department">Departamento</label>
-                            <select class="form-select form-select-lg" name="department" id="department" style="width: 100%"
+                            <select class="form-select form-select-lg" name="department" id="department"
+                                    style="width: 100%"
                                     value="{{isset($department)?$department:old('department')}}" required>
                             </select>
                         </div>
@@ -116,23 +124,34 @@
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
                             <label for="city">Ciudad</label><br>
                             <select class="form-select form-select-lg" name="city" id="city" style="width: 100%"
-                                    value="{{isset($city)?$city:old('city')}}" required>
+                                    value="{{isset($city)?$city:old('city')}}"
+                                    required>
                             </select>
-                        </div><br>
+                        </div>
+                        <br>
 
                         <!-- fin seccion direccion-->
 
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
-                            <label for="pago-contra-entrega"></label><input type="radio" name="paymentMethod" id="pago-contra-entrega" onclick="cleanMercadopago()" value="pago-contra-entrega" required>
+                            <label for="pago-contra-entrega"></label><input type="radio" name="paymentMethod"
+                                                                            id="pago-contra-entrega"
+                                                                            onclick="cleanMercadopago()"
+                                                                            value="pago-contra-entrega" required checked>
                             <label class="text-black" for="pagoCEnt">Pago Contra Entrega</label>
                         </div>
 
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
-                            <label for="pago-fisico"></label><input type="radio" name="paymentMethod" id="pago-fisico" onclick="cleanMercadopago()" value="pago-fisico">
+                            <label for="pago-fisico"></label><input type="radio" name="paymentMethod" id="pago-fisico"
+                                                                    onclick="cleanMercadopago()" value="pago-fisico">
                             <label class="text-black" for="pagoPFisico">Pago en punto físico</label>
                         </div>
-                        <br>
-                        <div id="wallet_container" style="margin-left: 10px; margin-right: 10px"></div>
+                        <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
+                            <label for="pago-fisico"></label><input type="radio" name="paymentMethod" id="pago-linea"
+                                                                    value="pago-linea" onclick="createCookie()">
+                            <label class="text-black" for="pagoPFisico">Pago en línea</label>
+                        </div>
+                        <div id="mercadopago"></div>
+
                         <div class="mt-3 mb-3 d-flex align-items-end justify-content-center">
                             <input type="submit" class="btn btn-warning" value="Confirmar pedido">
                         </div>
@@ -233,14 +252,81 @@
     <br>
 
     <script>
-        const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
-        const bricksBuilder = mp.bricks();
-        mp.bricks().create("wallet", "wallet_container", {
-            initialization: {
-                preferenceId: '{{$preference->id}}',
-            },
 
-        });
+
+
+        var createCookie = function () {
+            var nombre = document.getElementsByName("name")[0].value;
+            var apellidos = document.getElementsByName("lastName")[0].value;
+            var tipoDoc = document.getElementsByName("documentType")[0].value;
+            var doc = document.getElementsByName("documentNumber")[0].value;
+            var celular = document.getElementsByName("phoneNumber")[0].value;
+            var direccion = document.getElementsByName("address")[0].value;
+            var mail = document.getElementById("email").value;
+            var address = document.getElementsByName("shippingAddress")[0].value;
+            var departamento = document.getElementsByName("department")[0].value;
+            var ciudad = document.getElementsByName("city")[0].value;
+
+            if(nombre!=="" && apellidos!=="" && tipoDoc!=="" && doc!=="" && celular!=="" && direccion!=="" && mail!=="" &&
+                address!=="" && departamento!=="" && ciudad!==""){
+                //Creación botón mercadopago
+                const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
+                const bricksBuilder = mp.bricks();
+                mp.bricks().create("wallet", "wallet_container", {
+                    initialization: {
+                        preferenceId: '{{$preference->id}}',
+                    },
+                    callbacks: {
+                        onReady: () => {},
+                        onSubmit: () => {
+                            document.cookie="nombre="+encript(nombre)
+                            document.cookie="apellido="+encript(apellidos)
+                            document.cookie="tipoDoc="+encript(tipoDoc)
+                            document.cookie="doc="+encript(doc)
+                            document.cookie="celular="+encript(celular)
+                            document.cookie="direccion="+encript(direccion)
+                            document.cookie="mail="+encript(mail)
+                            document.cookie="shippingAddres="+encript(address)
+                            document.cookie="departamento="+encript(departamento)
+                            document.cookie="ciudad="+encript(ciudad)
+                        },
+                        onError: (error) => console.error(error),
+                    },
+                });
+                var div=document.getElementById("mercadopago");
+                div.innerHTML='<div id="wallet_container" style="margin-left: 10px; margin-right: 10px"></div>'
+
+                //##############################################3
+                //registro cookie
+
+            }else{
+                var button=document.getElementById("pago-contra-entrega")
+                button.click()
+                Swal.fire({
+                    title: 'Debe completar todos los campos para seleccionar este tipo de pago',
+                    icon: 'error',
+                    confirmButtonColor: '#a1bcff',
+                })
+            }
+
+
+
+        }
+        var encript=function(text){
+            var textEncripted=""
+            for (const key in text) {
+                textEncripted+=String.fromCharCode(text.charCodeAt(key)+50)
+            }
+
+            return textEncripted
+        }
+        var decript = function (text){
+            var textDecripted=""
+            for (const key in text) {
+                textDecripted+=String.fromCharCode(text.charCodeAt(key)-50)
+            }
+            return textDecripted
+        }
     </script>
 @endsection
 
