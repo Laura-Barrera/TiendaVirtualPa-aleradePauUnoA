@@ -323,20 +323,25 @@
                 }
             })
         })
-        @if(session('errorMessage') == 'stockError')
-        Swal.fire({
-            title: 'No hay más unidades de este producto',
-            icon: 'error',
-            confirmButtonColor: '#da0e1e',
-        })
-        @endif
-        @if(session('message') == 'successfulAddedOrder')
-        Swal.fire({
-            title: 'Producto agregado',
-            icon: 'success',
-            confirmButtonColor: '#199605',
-        })
-        @endif
+
+
+            console.log("Entra")
+            @if(session('errorMessage') == 'stockError')
+            Swal.fire({
+                title: 'No hay más unidades de este producto',
+                icon: 'error',
+                confirmButtonColor: '#da0e1e',
+            })
+            @endif
+            @if(session('message') == 'successfulAddedOrder')
+            Swal.fire({
+                title: 'Producto agregado',
+                icon: 'success',
+                confirmButtonColor: '#199605',
+            })
+            @endif
+
+
     </script>
 
 @endsection

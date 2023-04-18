@@ -51,7 +51,6 @@ class OrderController extends Controller
         if (!$result) {
             return redirect()->route('makeOrder', $category)->with('errorMessage', 'stockError');
         }
-
         return $this->addToTheList($product);
     }
 
@@ -85,7 +84,7 @@ class OrderController extends Controller
 
                 $item->stockAmount = ($item->stockAmount + 1);
 
-                return redirect()->route('makeOrder', $category);
+                return redirect()->route('makeOrder', $category)->with('message', 'successfulAddedOrder');;
             }
         }
 
