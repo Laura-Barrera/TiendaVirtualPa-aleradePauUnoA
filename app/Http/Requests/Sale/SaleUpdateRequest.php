@@ -25,8 +25,6 @@ class SaleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'saleDate' => ['required', 'date', 'max:255'],
-            'totalCost' => ['required', 'string', 'max:255'],
             'saleStatus' => ['required', 'boolean']
         ];
     }

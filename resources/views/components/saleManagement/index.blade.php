@@ -20,7 +20,7 @@
                     <th>Ciudad</th>
                     <th>Departamento</th>
                     <th>Total</th>
-                    <th>Estado del pedido</th>
+                    <th>Estado de la venta</th>
                     <th>Detalle de Compra</th>
                     <th>Acciones</th>
                 </tr>
@@ -39,7 +39,12 @@
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
                         <td>{{$shipping->totalCost}}</td>
-                        <td>{{$shipping->saleStatus}}</td>
+                        @if ($shipping->saleStatus == 0)
+                            <td>Sin pagar</td>
+                       @endif
+                        @if ($shipping->saleStatus == 1)
+                            <td>Pago</td>
+                        @endif
                         <td><p><a href="{{url('/shippingOrder/management/'.$shipping->id)}}" class="btn btn-primary" id="button">Visualizar Detalle</a></p></td>
                         <td>
                             <form action="{{ url('/shippingOrder/management/changeStatus/'.$shipping->id) }}" method="POST">

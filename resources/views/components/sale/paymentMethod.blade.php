@@ -146,7 +146,7 @@
                             <label class="text-black" for="pagoPFisico">Pago en punto físico</label>
                         </div>
                         <div class="form-group mt-3" style="margin-left: 10px; margin-right: 10px">
-                            <label for="pago-fisico"></label><input type="radio" name="paymentMethod" id="pago-linea"
+                            <label for="pago-linea"></label><input type="radio" name="paymentMethod" id="pago-linea"
                                                                     value="pago-linea" onclick="createCookie()">
                             <label class="text-black" for="pagoPFisico">Pago en línea</label>
                         </div>

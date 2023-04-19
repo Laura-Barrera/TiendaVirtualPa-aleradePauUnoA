@@ -24,7 +24,7 @@ class SalesManagementController extends Controller
     public function index(): \Illuminate\Contracts\View\Factory|View|Application
     {
         #return view('components.saleManagement.index', $data)->with(['CustomerDocument' => $data->customer->documentNumber], ['CustomerName'=> $data->customer->name]);
-        $data['shipping_order'] = Sale::all()->where('saleStatus', '=', false);
+        $data['shipping_order'] = Sale::all()->where('shipping_status', '=', false);
         return view('components.saleManagement.index', $data);
     }
     public function details(Sale $shipping)
@@ -34,8 +34,8 @@ class SalesManagementController extends Controller
     }
     public function changeStatus(Sale $shipping): Redirector|Application|RedirectResponse
     {
-        Sale::all()->find($shipping->getAttribute('id'))->setAttribute('shipping_status', true);
-        $shipping->save();
+        $sale = Sale::all()->find($shipping->getAttribute('id'));
+        $sale->update(['saleStatus' => true, 'shipping_status' => true]);
         return redirect('shippingOrder/management')->with('message', 'successfulSaleUpdate');
     }
 

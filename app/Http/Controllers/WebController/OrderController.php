@@ -163,8 +163,13 @@ class OrderController extends Controller
         $sale->setAttribute('id_payment_method', $idPayment);
         $sale->setAttribute('saleDate', Carbon::now());
         $sale->setAttribute('totalCost', $this->getTotal());
-        $sale->setAttribute('shipping_status', 0);
-        $sale->setAttribute('saleStatus', 0);
+        if ($paymentMethod->getAttribute('nameMethod') == 'pago-contra-entrega' or $paymentMethod->getAttribute('nameMethod') == 'pago-fisico'){
+            $sale->setAttribute('shipping_status', false);
+            $sale->setAttribute('saleStatus', false);
+        }else{
+            $sale->setAttribute('shipping_status', false);
+            $sale->setAttribute('saleStatus', true);
+        }
         $sale->save();
         $idSale = $sale->getAttribute('id');
 
