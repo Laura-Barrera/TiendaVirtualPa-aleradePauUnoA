@@ -40,6 +40,7 @@ class ControlSalesController extends Controller
         if ($cantidad>Product::all()->find($producto)->stockAmount){
             return redirect('/sales/register')->with('message', 'AmountNotValid');
         }else{
+
             $totalCost=(int)(Product::all()->find($producto)->price*Product::all()->find($producto)->iva) * $cantidad;
             $sale = new Sale([
                 'id_shipping_order'=>1,
@@ -51,10 +52,20 @@ class ControlSalesController extends Controller
                 'saleStatus'=>true
             ]);
 
+
+
             $sale->save();
+            $idsale= $sale->getAttribute('id');
             $producto= Product::all()->find($producto);
             $producto->stockAmount=(Product::all()->find($producto)->stockAmount)-$cantidad;
+            $idProduct = $producto->getAttribute('id');
             $producto->save();
+            $orderDetail = new OrderDetail([
+                'sale_id'=>$idsale,
+                'product_id'=>$idProduct,
+                'amount'=>$cantidad]);
+            $orderDetail->save();
+
 
             return redirect('/sales/register')->with('message', 'successfulPSalesCreated');
         }

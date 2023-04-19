@@ -153,7 +153,7 @@
                        class="{{request()->routeIs('shippingOrder/management') ? 'selected' : ''}}">
                         <div class="option">
                             <i class="bi bi-arrow-down-up"></i>
-                            <span>Gestión&nbsp;domicilios</span>
+                            <span>Gestión&nbsp;pedidos</span>
                         </div>
                     </a>
 
