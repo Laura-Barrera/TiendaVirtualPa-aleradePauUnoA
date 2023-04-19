@@ -8,8 +8,8 @@
         $preference = new MercadoPago\Preference();
         $preference->back_urls = array(
             "success" => route('successfulPayment'),
-            "failure" => "http://127.0.0.1:8000/errorPayment",
-            "pending" => "http://127.0.0.1:8000/pendingPayment"
+            "failure" => route('errorPayment'),
+            "pending" => route('pendingPayment')
         );
         $preference->auto_return = "approved";
 
