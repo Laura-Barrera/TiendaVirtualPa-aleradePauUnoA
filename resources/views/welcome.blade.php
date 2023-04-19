@@ -34,6 +34,10 @@
     <link href="{{ asset('css/globalStyles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/slideStyles.css') }}" rel="stylesheet">
 
+    @if(session('download.in.the.next.request'))
+        <meta http-equiv="refresh" content="0;url=http://127.0.0.1:8000/downloadBill">
+    @endif
+
     @yield('productStyles')
 
 </head>

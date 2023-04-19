@@ -266,6 +266,7 @@
             var address = document.getElementsByName("shippingAddress")[0].value;
             var departamento = document.getElementsByName("department")[0].value;
             var ciudad = document.getElementsByName("city")[0].value;
+            var metodoPago = "Mercado Pago";
 
             if(nombre!=="" && apellidos!=="" && tipoDoc!=="" && doc!=="" && celular!=="" && direccion!=="" && mail!=="" &&
                 address!=="" && departamento!=="" && ciudad!==""){
@@ -289,6 +290,7 @@
                             document.cookie="shippingAddres="+encript(address)
                             document.cookie="departamento="+encript(departamento)
                             document.cookie="ciudad="+encript(ciudad)
+                            document.cookie="metodoPago="+encript(metodoPago)
                             return false
                         },
                         onError: (error) => console.error(error),

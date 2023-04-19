@@ -112,6 +112,15 @@
             registrarVenta();
         @endif
 
+        @if(session('message') == 'successfulDelivery2')
+        Swal.fire({
+            title: 'Solicitud de domicilio realizada correctamente',
+            text: 'Cualquier inquietud no dudes en contactarnos.',
+            icon: 'success',
+            confirmButtonColor: '#5febc5',
+        })
+        @endif
+
         @if(session('message') == 'errorPayment')
         Swal.fire({
             title: 'Error!!',
@@ -129,7 +138,6 @@
             confirmButtonColor: '#da8f59',
         })
         @endif
-
         var decript = function (text){
             var textDecripted=""
             for (const key in text) {
@@ -154,6 +162,7 @@
             const numeroDocumento = decript(cookies[7].split("=")[1]);
             const direccionResidencia = decript(cookies[8].split("=")[1]);
             const direccionPedido = decript(cookies[9].split("=")[1]);
+            const metodoPago = decript(cookies[10].split("=")[1]);
             const data = {
                 'documentType': tipoDocumento,
                 'phoneNumber': numeroCelular,
@@ -164,7 +173,8 @@
                 'lastName': apellido,
                 'documentNumber': numeroDocumento,
                 'address': direccionResidencia,
-                'shippingAddress': direccionPedido
+                'shippingAddress': direccionPedido,
+                'paymentMethod': metodoPago
             };
 
             const options = {
@@ -174,9 +184,10 @@
                 },
                 body: JSON.stringify(data)
             };
+            eliminarCookies();
             fetch('/finalizeOrder', options)
-                .then(response => eliminarCookies())
                 .catch(error => console.error(error));
+
         }
     </script>
 

@@ -29,7 +29,7 @@
 <div class="container-fluid">
 
     <div class="container-fluid mt-3">
-        <h4 style="font-weight: bolder;">SOLICITUD DE DOMICILIO - 11&6 GASTRO PUB</h4>
+        <h4 style="font-weight: bolder;">SOLICITUD DE DOMICILIO - TIENDA VIRTUAL PAU UNO A</h4>
         <br>
     </div>
 
@@ -91,8 +91,7 @@
         <hr class="bg-dark">
 
         <div class="container-fluid mt-3">
-            <P>Cualquier inquietud comunicarse por medio de los diversos canales de comunicaón expuestos en:
-                https://11y6.gastropub.site/</P>
+            <P>Cualquier inquietud comunicarse a nuestros medios de comunicación./</P>
         </div>
 
         <hr class="bg-dark">

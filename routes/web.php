@@ -26,8 +26,7 @@ Route::get('/', [welcomeController::class, 'getStart'])->name('start');;
 Route::get('/nosotros', [welcomeController::class, 'getStartAbout']);
 Route::get('/catalogo', [welcomeController::class, 'getStartCatalogue']);
 Route::get('/category/{category}', [welcomeController::class, 'showProductsByCategory'])->name('category.products');
-Route::get('/order', [welcomeController::class, 'getOrderDetail']);
-Route::get('/order/{category}', [OrderController::class, 'getOrderDetail'])->name('order');
+Route::get('/order', [welcomeController::class, 'getOrderDetail'])->name('order');
 
 Auth::routes();
 
@@ -73,11 +72,16 @@ Route::delete('/removeProduct', [OrderController::class, 'removeProduct']);
 /*Rutas proceso de envio*/
 Route::get('/salePayment', [\App\Http\Controllers\WebController\OrderController::class, 'getPaymentMethod'])->name('paymentMethod');
 Route::post('/finalizeOrder', [\App\Http\Controllers\WebController\OrderController::class, 'finalizeOrder'])->name('finalizeOrder');
-Route::get('/downloadBill', [\App\Http\Controllers\WebController\OrderController::class, 'downloadBill']);
+Route::get('/downloadBill', [\App\Http\Controllers\WebController\OrderController::class, 'downloadBill'])->name('downloadBill');
 
 /*Rutas pago*/
 Route::get('/errorPayment', [\App\Http\Controllers\WebController\OrderController::class, 'getErrorPayment'])->name('errorPayment');
 Route::get('/successfulPayment', [\App\Http\Controllers\WebController\OrderController::class, 'getSuccessfulPayment'])->name('successfulPayment');
 Route::get('/pendingPayment', [\App\Http\Controllers\WebController\OrderController::class, 'getPendingPayment'])->name('pendingPayment');
+
+/* Ruta para crear enlace simbolico en el servidor */
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+})->middleware('auth');
 
 

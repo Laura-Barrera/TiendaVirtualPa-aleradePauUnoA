@@ -323,9 +323,6 @@
                 }
             })
         })
-
-
-            console.log("Entra")
             @if(session('errorMessage') == 'stockError')
             Swal.fire({
                 title: 'No hay más unidades de este producto',

@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -84,7 +85,7 @@ class OrderController extends Controller
 
                 $item->stockAmount = ($item->stockAmount + 1);
 
-                return redirect()->route('makeOrder', $category)->with('message', 'successfulAddedOrder');;
+                return redirect()->route('makeOrder', $category)->with('message', 'successfulAddedOrder');
             }
         }
 
@@ -182,7 +183,7 @@ class OrderController extends Controller
             $updatedProduct->save();
         }
         session(['nameBill' => $request->get('name')]);
-        session(['addressBill' => $request->get('address')]);
+        session(['addressBill' => $request->get('shippingAddress')]);
         session(['phoneNumberBill' => $request->get('phoneNumber')]);
         session(['productsBill' => $this->getListProducts()]);
         session(['totalBill' => $this->getTotal()]);
@@ -190,7 +191,7 @@ class OrderController extends Controller
 
         $this->emptyProductList();
 
-        return redirect()->route('start', 1)->with('message', 'successfulDelivery');
+        return redirect()->route('order')->with('message', 'successfulDelivery2');
     }
 
     private function emptyProductList()
