@@ -4,7 +4,7 @@
         <div class="row align-items-center">
             <div class="col-lg-4 my-3 my-lg-0">
                 <p>Contáctanos</p>
-                3202560961 <a target="_blank" class="btn btn-dark btn-social mx-2" href="https://wa.me/message/5HVCWFT24IHBA1" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                3028309499 <a target="_blank" class="btn btn-dark btn-social mx-2" href="https://wa.me/message/5HVCWFT24IHBA1" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
             </div>
             <div class="col-lg-4 my-3 my-lg-0">

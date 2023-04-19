@@ -15,7 +15,7 @@
 
                 <h3 style="color: black"><b>POLÍTICAS DE DEVOLUCIÓN</b></h3><br>
                 <table>
-                    <thead class="text-center" style="background: #d78aea; color: black">
+                    <thead class="text-center" style="background: #a1bcff; color: black">
                     <tr>
                         <th>Devoluciones</th>
                         <th>Reembolso</th>
@@ -25,7 +25,7 @@
                     </thead>
                     <tbody class="text-center align-middle" style="background-color: white">
                     <tr>
-                        <td style="color: #6c757d; text-align: justify; border: 2px solid #d78aea; padding: 10px;">
+                        <td style="color: #6c757d; text-align: justify; border: 2px solid #a1bcff; padding: 10px;">
                             <ul>
                                 <li>Los clientes pueden devolver cualquier artículo no utilizado y en su embalaje
                                     original dentro de los 30 días posteriores a la recepción del pedido.
@@ -38,7 +38,7 @@
                                 </li>
                             </ul>
                         </td>
-                        <td style="color: #6c757d; text-align: justify; border: 2px solid #d78aea; padding: 10px;">
+                        <td style="color: #6c757d; text-align: justify; border: 2px solid #a1bcff; padding: 10px;">
                             <ul>
                                 <li>Los reembolsos se emitirán a la forma original de pago una vez que la tienda
                                     haya recibido el artículo devuelto.
@@ -46,14 +46,14 @@
                                 <li>Los gastos de envío originales no son reembolsables.</li>
                             </ul>
                         </td>
-                        <td style="color: #6c757d; text-align: justify; border: 2px solid #d78aea; padding: 10px;">
+                        <td style="color: #6c757d; text-align: justify; border: 2px solid #a1bcff; padding: 10px;">
                             <ul>
                                 <li>Los artículos en oferta no son elegibles para devoluciones o intercambios, a
                                     menos que estén defectuosos.
                                 </li>
                             </ul>
                         </td>
-                        <td style="color: #6c757d; text-align: justify; border: 2px solid #d78aea; padding: 10px;">
+                        <td style="color: #6c757d; text-align: justify; border: 2px solid #a1bcff; padding: 10px;">
                             <ul>
                                 <li>Si un artículo es defectuoso, los clientes deben contactar al servicio al
                                     cliente de la tienda en línea dentro de las 48 horas posteriores a la recepción

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\..\catalogue;
+namespace App\View\Components\catalogue;
 
 use Illuminate\View\Component;
 
