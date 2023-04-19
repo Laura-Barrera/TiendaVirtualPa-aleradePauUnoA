@@ -289,6 +289,7 @@
                             document.cookie="shippingAddres="+encript(address)
                             document.cookie="departamento="+encript(departamento)
                             document.cookie="ciudad="+encript(ciudad)
+                            return false
                         },
                         onError: (error) => console.error(error),
                     },
@@ -308,8 +309,6 @@
                     confirmButtonColor: '#a1bcff',
                 })
             }
-
-
 
         }
         var encript=function(text){

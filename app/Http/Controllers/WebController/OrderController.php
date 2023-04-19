@@ -129,6 +129,7 @@ class OrderController extends Controller
 
     public function finalizeOrder(DeliveryRequest $request): RedirectResponse
     {
+
         $customer = new Customer();
         $customer->setAttribute('name', $request->get('name'));
         $customer->setAttribute('lastName', $request->get('lastName'));

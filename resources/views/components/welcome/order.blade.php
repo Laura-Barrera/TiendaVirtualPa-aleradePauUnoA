@@ -103,12 +103,13 @@
 @section('orderScripts')
     <script>
         @if(session('message') == 'successfulDelivery')
-        Swal.fire({
-            title: 'Solicitud de domicilio realizada correctamente',
-            text: 'Cualquier inquietud no dudes en contactarnos.',
-            icon: 'success',
-            confirmButtonColor: '#5febc5',
-        })
+            Swal.fire({
+                title: 'Solicitud de domicilio realizada correctamente',
+                text: 'Cualquier inquietud no dudes en contactarnos.',
+                icon: 'success',
+                confirmButtonColor: '#5febc5',
+            })
+            registrarVenta();
         @endif
 
         @if(session('message') == 'errorPayment')
@@ -128,5 +129,55 @@
             confirmButtonColor: '#da8f59',
         })
         @endif
+
+        var decript = function (text){
+            var textDecripted=""
+            for (const key in text) {
+                textDecripted+=String.fromCharCode(text.charCodeAt(key)-50)
+            }
+            return textDecripted
+        }
+        function eliminarCookies() {
+            document.cookie.split(";").forEach(function(c) {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
+        }
+        function registrarVenta(){
+            const cookies = document.cookie.split(";");
+            const tipoDocumento = decript(cookies[0].split("=")[1]);
+            const numeroCelular = decript(cookies[1].split("=")[1]);
+            const departamento = decript(cookies[2].split("=")[1]);
+            const ciudad = decript(cookies[3].split("=")[1]);
+            const mail = decript(cookies[4].split("=")[1]);
+            const nombre = decript(cookies[5].split("=")[1]);
+            const apellido = decript(cookies[6].split("=")[1]);
+            const numeroDocumento = decript(cookies[7].split("=")[1]);
+            const direccionResidencia = decript(cookies[8].split("=")[1]);
+            const direccionPedido = decript(cookies[9].split("=")[1]);
+            const data = {
+                'documentType': tipoDocumento,
+                'phoneNumber': numeroCelular,
+                'department': departamento,
+                'city': ciudad,
+                'email': mail,
+                'name': nombre,
+                'lastName': apellido,
+                'documentNumber': numeroDocumento,
+                'address': direccionResidencia,
+                'shippingAddress': direccionPedido
+            };
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+            fetch('/finalizeOrder', options)
+                .then(response => eliminarCookies())
+                .catch(error => console.error(error));
+        }
     </script>
+
 @endsection
