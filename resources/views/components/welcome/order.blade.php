@@ -106,27 +106,13 @@
 @endsection
 @section('orderScripts')
     <script>
-        console.log(decript(document.cookie.split(";")[9].split("=")[1]))
         @if(session('message') == 'successfulDelivery')
             Swal.fire({
                 title: 'Solicitud de domicilio realizada correctamente',
                 text: 'Cualquier inquietud no dudes en contactarnos.',
                 icon: 'success',
                 confirmButtonColor: '#5febc5',
-            }).then(function (){
-                registrarVenta();
-                window.location.reload()
             })
-
-        @endif
-
-        @if(session('message') == 'successfulDelivery2')
-        Swal.fire({
-            title: 'Solicitud de domicilio realizada correctamente',
-            text: 'Cualquier inquietud no dudes en contactarnos.',
-            icon: 'success',
-            confirmButtonColor: '#5febc5',
-        })
         @endif
 
         @if(session('message') == 'errorPayment')
@@ -146,70 +132,6 @@
             confirmButtonColor: '#da8f59',
         })
         @endif
-        function decript(text){
-            var textDecripted=""
-            for (const key in text) {
-                textDecripted+=String.fromCharCode(text.charCodeAt(key)-50)
-            }
-            return textDecripted
-        }
-        function eliminarCookies() {
-            document.cookie.split(";").forEach(function(c) {
-                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-            });
-        }
-        function registrarVenta(){
-            let nombre;
-            let apellido;
-            let tipoDocumento;
-            let numeroCelular;
-            let departamento;
-            let ciudad;
-            let mail;
-            let numeroDocumento;
-            let direccionResidencia;
-            let metodoPago;
-            let direccionPedido;
-            for (const coo of document.cookie.split(';')) {
-                nombre =coo.split('=')[0]==="nombre"|| coo.split('=')[0]===" nombre"?decript(coo.split('=')[1]):nombre
-                apellido = coo.split('=')[0]==="apellido"|| coo.split('=')[0]===" apellido"?decript(coo.split('=')[1]):apellido
-                tipoDocumento = coo.split('=')[0]==="tipoDoc"|| coo.split('=')[0]===" tipoDoc"?decript(coo.split('=')[1]):tipoDocumento
-                numeroCelular = coo.split('=')[0]==="celular"|| coo.split('=')[0]===" celular"?decript(coo.split('=')[1]):numeroCelular
-                departamento = coo.split('=')[0]==="departamento"|| coo.split('=')[0]===" departamento"?decript(coo.split('=')[1]):departamento
-                ciudad = coo.split('=')[0]==="ciudad"|| coo.split('=')[0]===" ciudad"?decript(coo.split('=')[1]):ciudad
-                mail = coo.split('=')[0]==="mail"|| coo.split('=')[0]===" mail"?decript(coo.split('=')[1]):mail
-                numeroDocumento = coo.split('=')[0]==="doc"|| coo.split('=')[0]===" doc"?decript(coo.split('=')[1]):numeroDocumento
-                direccionResidencia = coo.split('=')[0]==="direccion"|| coo.split('=')[0]===" direccion"?decript(coo.split('=')[1]):direccionResidencia
-                metodoPago = coo.split('=')[0]==="metodoPago"|| coo.split('=')[0]===" metodoPago"?decript(coo.split('=')[1]):metodoPago
-                direccionPedido = coo.split('=')[0]==="shippingAddres"|| coo.split('=')[0]===" shippingAddres"?decript(coo.split('=')[1]):direccionPedido
-            }
-            const data = {
-                'documentType': tipoDocumento,
-                'phoneNumber': numeroCelular,
-                'department': departamento,
-                'city': ciudad,
-                'email': mail,
-                'name': nombre,
-                'lastName': apellido,
-                'documentNumber': numeroDocumento,
-                'address': direccionResidencia,
-                'shippingAddress': direccionPedido,
-                'paymentMethod': metodoPago
-            };
-
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                body: JSON.stringify(data)
-            };
-            console.log(options)
-            fetch('/finalizeOrder', options)
-                .catch(error => console.error(error));
-            eliminarCookies();
-        }
     </script>
 
 @endsection
