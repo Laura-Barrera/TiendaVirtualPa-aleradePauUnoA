@@ -59,7 +59,7 @@
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
                         <td>{{\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod}}</td>
-                        <td>{{$shipping->totalCost}}</td>
+                        <td>${{number_format($shipping->totalCost,0,',','.')}}</td>
                     </tr>
                     @php
                         $total += $shipping->totalCost; // Sumar el valor de $shipping->totalCost a $total
@@ -68,7 +68,7 @@
 
                 <tr>
                     <td colspan="8" style="text-align:right; font-weight: bold;">TOTAL:</td>
-                    <td>{{$total}}</td> <!-- Mostrar el valor de $total -->
+                    <td>${{number_format( $total, 0, ',', '.')}}</td> <!-- Mostrar el valor de $total -->
                 </tr>
                 </tbody>
 
