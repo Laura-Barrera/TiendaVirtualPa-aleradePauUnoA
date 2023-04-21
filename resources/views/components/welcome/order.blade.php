@@ -89,7 +89,7 @@
                         </ul>
                         <div class="card-footer d-flex">
                             <span class="text-black fs-4 fw-bolder">
-                                Total:&nbsp;${{number_format( $total, 0, ',', '.')}}
+                                Total:${{number_format( $total, 0, ',', '.')}}
                             </span>
                         </div>
                     </div><br>
