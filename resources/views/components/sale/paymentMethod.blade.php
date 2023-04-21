@@ -320,21 +320,6 @@
             }
 
         }
-        var encript=function(text){
-            var textEncripted=""
-            for (const key in text) {
-                textEncripted+=String.fromCharCode(text.charCodeAt(key)+50)
-            }
-
-            return textEncripted
-        }
-        var decript = function (text){
-            var textDecripted=""
-            for (const key in text) {
-                textDecripted+=String.fromCharCode(text.charCodeAt(key)-50)
-            }
-            return textDecripted
-        }
     </script>
 @endsection
 
