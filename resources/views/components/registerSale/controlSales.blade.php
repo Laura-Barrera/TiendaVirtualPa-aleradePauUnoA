@@ -95,9 +95,7 @@
                 </thead>
 
                 <tbody class="text-center" style="background-color: #F9F9F9" id="table">
-                @php
-                    $total = 0; // Declarar la variable $total e inicializarla en 0
-                @endphp
+
 
                 @foreach ($shipping_order as $shipping)
                     @if(\App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod === 'Efectivo' || \App\Models\PaymentMethod::all()->find($shipping->id_payment_method)->nameMethod === 'pago-fisico')
