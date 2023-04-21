@@ -155,8 +155,8 @@
                         <div class="mt-3 mb-3 d-flex align-items-end justify-content-center">
                             <input type="submit" class="btn btn-warning" value="Confirmar pedido">
                         </div>
-
                     </form>
+                    <div id="wallet_container" style="margin-left: 10px; margin-right: 10px"></div>
                 </div>
             </div>
             <div class="col-6 ">
@@ -266,10 +266,10 @@
             var address = document.getElementsByName("shippingAddress")[0].value;
             var departamento = document.getElementsByName("department")[0].value;
             var ciudad = document.getElementsByName("city")[0].value;
-            var metodoPago = "Mercado Pago";
+            var metodoPago = document.getElementsByName("paymentMethod")[2].value;
 
             if(nombre!=="" && apellidos!=="" && tipoDoc!=="" && doc!=="" && celular!=="" && direccion!=="" && mail!=="" &&
-                address!=="" && departamento!=="" && ciudad!==""){
+                address!=="" && departamento!=="" && ciudad!=="" && metodoPago != ""){
                 //Creación botón mercadopago
                 const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
                 const bricksBuilder = mp.bricks();
@@ -296,9 +296,6 @@
                         onError: (error) => console.error(error),
                     },
                 });
-                var div=document.getElementById("mercadopago");
-                div.innerHTML='<div id="wallet_container" style="margin-left: 10px; margin-right: 10px"></div>'
-
                 //##############################################3
                 //registro cookie
 
