@@ -153,7 +153,7 @@
                         <div id="mercadopago"></div>
 
                         <div class="mt-3 mb-3 d-flex align-items-end justify-content-center">
-                            <input type="submit" class="btn btn-warning" value="Confirmar pedido">
+                            <input  id="buttonConfirm" type="submit" class="btn btn-warning" value="Confirmar pedido">
                         </div>
                     </form>
                     <div id="wallet_container" style="margin-left: 10px; margin-right: 10px"></div>
@@ -267,7 +267,8 @@
             var departamento = document.getElementsByName("department")[0].value;
             var ciudad = document.getElementsByName("city")[0].value;
             var metodoPago = document.getElementsByName("paymentMethod")[2].value;
-
+            var buttonConfirm = document.getElementById("buttonConfirm");
+            buttonConfirm.style.display="none";
             if(nombre!=="" && apellidos!=="" && tipoDoc!=="" && doc!=="" && celular!=="" && direccion!=="" && mail!=="" &&
                 address!=="" && departamento!=="" && ciudad!=="" && metodoPago != ""){
                 //Creación botón mercadopago
@@ -332,8 +333,11 @@
     <script>
 
         var cleanMercadopago = function () {
-            var div = document.getElementById('mercadopago');
-            div.innerHTML = ""
+            var div = document.getElementById('wallet_container');
+            var buttonConfirm = document.getElementById("buttonConfirm");
+            console.log(div);
+            div.innerHTML = "";
+            buttonConfirm.style.display="block"
         }
         // Confirmation alert
         $('.confirmation_alert').submit(function (e) {
