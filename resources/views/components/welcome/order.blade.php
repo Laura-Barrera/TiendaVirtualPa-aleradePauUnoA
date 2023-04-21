@@ -8,7 +8,9 @@
                     <img class="img-fluid" src="{{asset('img/orderBackground/bannerOrder.png')}}" width="300"
                          alt="..."/>
                 @else
-
+                    @php
+                        $total = 0; // Declarar la variable $total e inicializarla en 0
+                    @endphp
                     <div class="card" style="background-color: #aef0ff">
 
                         <div class="card-header d-flex align-items-center justify-content-center">
@@ -79,15 +81,17 @@
                                         </div>
 
                                     </div>
-
+                                    @php
+                                        $total += $selectedProduct->stockAmount * $selectedProduct->price;
+                                    @endphp
                                 @endforeach
                             </li>
                         </ul>
-                        <!--<div class="card-footer d-flex">
+                        <div class="card-footer d-flex">
                             <span class="text-black fs-4 fw-bolder">
-                                Total:&nbsp;${{number_format( session('total'), 0, ',', '.')}}
+                                Total:&nbsp;${{number_format( $total, 0, ',', '.')}}
                             </span>
-                        </div>-->
+                        </div>
                     </div><br>
                     <a href="{{ route('paymentMethod') }}" class="btn btn-danger" id="button">Pagar Ahora</a>
                 @endif
