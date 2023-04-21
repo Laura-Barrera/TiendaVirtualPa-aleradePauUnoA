@@ -82,7 +82,7 @@
 
                                     </div>
                                     @php
-                                        $total += $selectedProduct->stockAmount * $selectedProduct->price; // Sumar el valor de $shipping->totalCost a $total
+                                        $total += $selectedProduct->stockAmount * $selectedProduct->price;
                                     @endphp
                                 @endforeach
                             </li>
