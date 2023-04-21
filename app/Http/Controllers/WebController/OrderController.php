@@ -27,15 +27,15 @@ class OrderController extends Controller
     }
 
     function getErrorPayment(){
-        return view('components.welcome.order')->with('message', 'errorPayment');
+        return redirect()->route('order')->with('message', 'errorPayment');
     }
 
     function getPendingPayment(){
-        return view('components.welcome.order')->with('message', 'pendingPayment');
+        return redirect()->route('order')->with('message', 'pendingPayment');
     }
 
     function getSuccessfulPayment(){
-        return view('components.welcome.order')->with('message', 'successfulDelivery');
+        return redirect()->route('order')->with('message', 'successfulDelivery');
     }
 
     public function getMakeOrder(Category $category): Factory|View|Application
