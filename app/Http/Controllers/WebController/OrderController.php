@@ -34,7 +34,69 @@ class OrderController extends Controller
         return redirect()->route('order')->with('message', 'pendingPayment');
     }
 
-    function getSuccessfulPayment(){
+    function getSuccessfulPayment():RedirectResponse
+    {
+
+        $customer = new Customer();
+        $customer->setAttribute('name', session('name'));
+        $customer->setAttribute('lastName', session('lastName'));
+        $customer->setAttribute('documentType', session('documentType'));
+        $customer->setAttribute('documentNumber', session('documentNumber'));
+        $customer->setAttribute('phoneNumber', session('phoneNumber'));
+        $customer->setAttribute('address', session('address'));
+        $customer->setAttribute('email', session('email'));
+        $customer->save();
+
+        $idCustomer = $customer->getAttribute('id');
+
+        $shippingOrder = new ShippingOrder();
+        $shippingOrder->setAttribute('address', session('shippingAddress'));
+        $shippingOrder->setAttribute('department', session('department'));
+        $shippingOrder->setAttribute('city', session('city'));
+        $shippingOrder->save();
+
+        $idShipping = $shippingOrder->getAttribute('id');
+
+        $paymentMethod = new PaymentMethod();
+        $paymentMethod->setAttribute('nameMethod', session('paymentMethod'));
+        $paymentMethod->setAttribute('additionalCost', 5000);
+        $paymentMethod->save();
+
+        $idPayment = $paymentMethod->getAttribute('id');
+
+        $sale = new Sale();
+        $sale->setAttribute('id_shipping_order', $idShipping);
+        $sale->setAttribute('id_customer', $idCustomer);
+        $sale->setAttribute('id_payment_method', $idPayment);
+        $sale->setAttribute('saleDate', Carbon::now());
+        $sale->setAttribute('totalCost', $this->getTotal());
+        $sale->setAttribute('shipping_status', false);
+        $sale->setAttribute('saleStatus', true);
+        $sale->save();
+        $idSale = $sale->getAttribute('id');
+
+
+        $products = $this->getListProducts();
+
+        foreach ($products as $product) {
+            $orderDetail = new OrderDetail([
+                'sale_id' => $idSale,
+                'product_id' => $product->getAttribute('id'),
+                'amount' => $product->getAttribute('stockAmount')
+            ]);
+            $orderDetail->save();
+            $updatedProduct = Product::all()->find($product->getAttribute('id'));
+            $updatedProduct->stockAmount = ($updatedProduct->stockAmount - $orderDetail->getAttribute('amount'));
+            $updatedProduct->save();
+        }
+        session(['nameBill' => session('name')]);
+        session(['addressBill' => session('shippingAddress')]);
+        session(['phoneNumberBill' => session('phoneNumber')]);
+        session(['productsBill' => $this->getListProducts()]);
+        session(['totalBill' => $this->getTotal()]);
+        session(['download.in.the.next.request' => 'downloadBill']);
+
+        $this->emptyProductList();
         return redirect()->route('order')->with('message', 'successfulDelivery');
     }
 
@@ -196,7 +258,21 @@ class OrderController extends Controller
 
         $this->emptyProductList();
 
-        return redirect()->route('order')->with('message', 'successfulDelivery2');
+        return redirect()->route('order')->with('message', 'successfulDelivery');
+    }
+
+    public function storeSession(Request $request){
+        session(['documentType' => $request->get('documentType')]);
+        session(['phoneNumber' => $request->get('phoneNumber')]);
+        session(['department' => $request->get('department')]);
+        session(['city' => $request->get('city')]);
+        session(['email' => $request->get('email')]);
+        session(['name' => $request->get('name')]);
+        session(['lastName' => $request->get('lastName')]);
+        session(['documentNumber' => $request->get('documentNumber')]);
+        session(['address' => $request->get('address')]);
+        session(['shippingAddress' => $request->get('shippingAddress')]);
+        session(['paymentMethod' => $request->get('paymentMethod')]);
     }
 
     private function emptyProductList()

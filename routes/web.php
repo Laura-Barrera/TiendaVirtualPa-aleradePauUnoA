@@ -75,6 +75,7 @@ Route::post('/finalizeOrder', [\App\Http\Controllers\WebController\OrderControll
 Route::get('/downloadBill', [\App\Http\Controllers\WebController\OrderController::class, 'downloadBill'])->name('downloadBill');
 
 /*Rutas pago*/
+Route::post('/storeSession', [OrderController::class, 'storeSession']);
 Route::get('/errorPayment', [\App\Http\Controllers\WebController\OrderController::class, 'getErrorPayment'])->name('errorPayment');
 Route::get('/successfulPayment', [\App\Http\Controllers\WebController\OrderController::class, 'getSuccessfulPayment'])->name('successfulPayment');
 Route::get('/pendingPayment', [\App\Http\Controllers\WebController\OrderController::class, 'getPendingPayment'])->name('pendingPayment');

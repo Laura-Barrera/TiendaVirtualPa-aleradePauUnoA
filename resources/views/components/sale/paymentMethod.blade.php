@@ -271,6 +271,19 @@
             buttonConfirm.style.display="none";
             if(nombre!=="" && apellidos!=="" && tipoDoc!=="" && doc!=="" && celular!=="" && direccion!=="" && mail!=="" &&
                 address!=="" && departamento!=="" && ciudad!=="" && metodoPago != ""){
+                const data = {
+                    'documentType': tipoDoc,
+                    'phoneNumber': celular,
+                    'department': departamento,
+                    'city': ciudad,
+                    'email': mail,
+                    'name': nombre,
+                    'lastName': apellidos,
+                    'documentNumber': doc,
+                    'address': direccion,
+                    'shippingAddress': address,
+                    'paymentMethod': metodoPago
+                };
                 //Creación botón mercadopago
                 const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
                 const bricksBuilder = mp.bricks();
@@ -281,18 +294,14 @@
                     callbacks: {
                         onReady: () => {},
                         onSubmit: () => {
-                            document.cookie="nombre="+encript(nombre)
-                            document.cookie="apellido="+encript(apellidos)
-                            document.cookie="tipoDoc="+encript(tipoDoc)
-                            document.cookie="doc="+encript(doc)
-                            document.cookie="celular="+encript(celular)
-                            document.cookie="direccion="+encript(direccion)
-                            document.cookie="mail="+encript(mail)
-                            document.cookie="shippingAddres="+encript(address)
-                            document.cookie="departamento="+encript(departamento)
-                            document.cookie="ciudad="+encript(ciudad)
-                            document.cookie="metodoPago="+encript(metodoPago)
-                            return false
+                            fetch('/storeSession',{
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                },
+                                body: JSON.stringify(data)
+                            })
                         },
                         onError: (error) => console.error(error),
                     },
@@ -310,21 +319,6 @@
                 })
             }
 
-        }
-        var encript=function(text){
-            var textEncripted=""
-            for (const key in text) {
-                textEncripted+=String.fromCharCode(text.charCodeAt(key)+50)
-            }
-
-            return textEncripted
-        }
-        var decript = function (text){
-            var textDecripted=""
-            for (const key in text) {
-                textDecripted+=String.fromCharCode(text.charCodeAt(key)-50)
-            }
-            return textDecripted
         }
     </script>
 @endsection
