@@ -38,7 +38,7 @@
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->address}}</td>
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->city}}</td>
                         <td>{{\App\Models\ShippingOrder::all()->find($shipping->id_shipping_order)->department}}</td>
-                        <td>{{$shipping->totalCost}}</td>
+                        <td>${{number_format($shipping->totalCost,0,',','.')}}</td>
                         @if ($shipping->saleStatus == 0)
                             <td>Sin pagar</td>
                        @endif

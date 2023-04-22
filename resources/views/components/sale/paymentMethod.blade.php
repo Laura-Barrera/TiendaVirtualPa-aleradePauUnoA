@@ -167,10 +167,13 @@
                                  alt="..."/>
                         @else
 
-                            <div class="card" style="background-color: #aef0ff">
+                            @php
+                                $total = 0; // Declarar la variable $total e inicializarla en 0
+                            @endphp
+                            <div class="card" style="background-color: #aef0ff; width: 80%">
 
                                 <div class="card-header d-flex align-items-center justify-content-center">
-                                    <span class="text-black fw-bolder " style="font-size: 25px" ;>Tu pedido</span>
+                                    <span class="text-black fw-bolder " style="font-size: 25px";>Tu pedido</span>
                                 </div>
 
                                 <ul class="list-group list-group-flush" style="overflow-y: auto; height: 13rem;">
@@ -237,10 +240,17 @@
                                                 </div>
 
                                             </div>
-
+                                            @php
+                                                $total += $selectedProduct->stockAmount * $selectedProduct->price;
+                                            @endphp
                                         @endforeach
                                     </li>
                                 </ul>
+                                <div class="card-footer d-flex">
+                            <span class="text-black fs-4 fw-bolder">
+                                Total:${{number_format( $total, 0, ',', '.')}}
+                            </span>
+                                </div>
                             </div><br>
                         @endif
                     </div>
